@@ -1,0 +1,12 @@
+*****************************************************************
+composer create-project laravel/laravel htdentshop
+
+git init
+git add .
+git commit -m "Iniciando Ecommerce"
+git log 
+
+git remote add origin https://github.com/Mersmith/htdentshop.git
+
+git push origin master
+*****************************************************************
