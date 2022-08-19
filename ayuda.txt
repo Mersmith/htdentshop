@@ -153,4 +153,12 @@ git commit -m "Menu desplegable de Perfil y del Carrito"
 git push origin menuinicio
 ->Click en boton Merge pull request
 *****************************************************************
+git checkout -b 7_menuprincipal
+git branch
+git status
 
+git add .
+git commit -m "Interación con Alpine js y sidebar"
+git push origin 7_menuprincipal
+->Click en boton Merge pull request
+*****************************************************************
