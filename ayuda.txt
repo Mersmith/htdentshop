@@ -108,3 +108,41 @@ git commit -m "Llenando datos falso"
 git push origin factories
 ->Click en boton Merge pull request
 *****************************************************************
+PS C:\xampp\htdocs> git clone https://github.com/Mersmith/htdentshop.git
+
+composer install
+npm install
+crear el archivo .env
+
+php artisan storage:link
+*****************************************************************
+->Instalar Tailwind 
+->Al momentos de instalar jetstream se instalo y configuro Tailwind
+*****************************************************************
+php artisan make:livewire menu-principal
+php artisan vendor:publish --tag=jetstream-views
+no
+
+php artisan key:generate
+*****************************************************************
+git config --global user.email "mersmith14@gmail.com"
+git config --global user.name "Mersmith"
+git config --global -l
+
+git init
+git add .
+git checkout -b plantilla
+git branch
+git status
+
+git add .
+
+git commit -m "Diseñando la plantilla de app"
+git push origin plantilla
+->Click en boton Merge pull request
+*****************************************************************
+php artisan make:livewire search
+
+->configure jetstream habilitar subir fotos
+php artisan make:livewire dropdown-cart
+*****************************************************************
