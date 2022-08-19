@@ -36,7 +36,7 @@
 
     @stack('modals')
 
-    <script src="{{ asset('Inicio/js/menu-principal.js') }}"></script>
+    <!--<script src="{{ asset('Inicio/js/menu-principal.js') }}"></script>-->
 
     @livewireScripts
 </body>

@@ -12,7 +12,9 @@
 
 /*INICIO ESTILOS GRID TEMPLATE*/
 .contenedor_navbar {
-    position: fixed;
+    /*position: fixed;*/
+    position: sticky;
+    top: 0;
     width: 100%;
     background-color: white;
     display: flex;
@@ -194,11 +196,7 @@ nav .menu_principal .submenu_3 li:hover .submenu_4_activo {
     .contenedor_iconos {
         border-bottom: 1px solid rgba(129, 129, 129, .2);
     }
-
-    .navbar .icono_hamburguesa {
-        display: block;
-    }
-
+ 
     .menu_principal {
         flex-direction: column;
     }
