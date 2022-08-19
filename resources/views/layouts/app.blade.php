@@ -15,6 +15,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('Inicio/css/menu-principal.css') }}">
+
     @livewireStyles
 </head>
 
@@ -33,6 +35,8 @@
     </div>
 
     @stack('modals')
+
+    <script src="{{ asset('Inicio/js/menu-principal.js') }}"></script>
 
     @livewireScripts
 </body>

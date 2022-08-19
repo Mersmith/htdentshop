@@ -141,8 +141,16 @@ git commit -m "Diseñando la plantilla de app"
 git push origin plantilla
 ->Click en boton Merge pull request
 *****************************************************************
-php artisan make:livewire search
-
 ->configure jetstream habilitar subir fotos
-php artisan make:livewire dropdown-cart
+php artisan make:livewire menu-carrrito
 *****************************************************************
+git checkout -b menuinicio
+git branch
+git status
+
+git add .
+git commit -m "Menu desplegable de Perfil y del Carrito"
+git push origin menuinicio
+->Click en boton Merge pull request
+*****************************************************************
+
