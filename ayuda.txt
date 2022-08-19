@@ -39,7 +39,7 @@ php artisan make:model Categoria -ms
 php artisan make:model Subcategoria -ms
 
 php artisan make:model Marca -mfs
-php artisan make:migration create_marca_categoria_table
+php artisan make:migration create_categoria_marca_table
 
 ->Crea la migración, el modelo y factories
 php artisan make:model Producto -msf
@@ -74,4 +74,37 @@ git commit -m "Creando las relaciones con eloquent"
 git push origin relaciones
 ->Click en boton Merge pull request
 *****************************************************************
+->Seeder: permiten comunicarse con la base de datos de una forma más eficiente y optimizada.
+->Factories: nos permiten crear registros de prueba
+php artisan make:seeder UserSeeder
 
+php artisan make:factory CategoriaFactory
+
+->cambiar en config el filesystems la ruta
+php artisan storage:link
+
+php artisan migrate:fresh --seed
+->Me salio error en guardar imagenes en el public y pues la solucion es mofificar el vendor
+vendor\fakerphp\faker\src\Faker\Provider\Image.php
+$baseUrl = "https://picsum.photos/";
+
+php artisan migrate:fresh --seed
+
+php artisan make:factory SubcategoriaFactory
+php artisan migrate:fresh --seed
+
+php artisan migrate:fresh --seed
+php artisan make:seeder ColorProductoSeeder
+php artisan make:seeder MedidaSeeder
+
+php artisan migrate:fresh --seed
+*****************************************************************
+git checkout -b factories
+git branch
+git status
+
+git add .
+git commit -m "Llenando datos falso"
+git push origin factories
+->Click en boton Merge pull request
+*****************************************************************
