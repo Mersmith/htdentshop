@@ -32,3 +32,35 @@ git add .
 git commit -m "Instalando dependencias"
 git push origin dependencias
 ->Click en boton Merge pull request
+*****************************************************************
+->Crea la migración y el modelo
+->m:migración, s: seeder cantidad de registros, c: controlador, f: factories
+php artisan make:model Categoria -ms
+php artisan make:model Subcategoria -ms
+
+php artisan make:model Marca -mfs
+php artisan make:migration create_marca_categoria_table
+
+->Crea la migración, el modelo y factories
+php artisan make:model Producto -msf
+
+php artisan make:model Color -ms
+php artisan make:migration create_color_producto_table
+
+php artisan make:model Medida -mf
+php artisan make:migration create_color_medida_table
+
+php artisan make:model Imagen -mf
+
+php artisan migrate
+php artisan migrate:rollback
+php artisan migrate
+*****************************************************************
+git checkout -b modelo
+git branch
+git status
+
+git add .
+git commit -m "Instalando dependencias"
+git push origin dependencias
+->Click en boton Merge pull request
