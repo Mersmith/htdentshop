@@ -7,6 +7,28 @@ git commit -m "Iniciando Ecommerce"
 git log 
 
 git remote add origin https://github.com/Mersmith/htdentshop.git
-
 git push origin master
+
 *****************************************************************
+php artisan serve
+composer require laravel/jetstream
+
+php artisan jetstream:install livewire
+
+npm install
+
+npm run dev
+
+->Configurar el .env con la base de datos mysql
+->Crear la base de datos en phpmyadmin
+
+php artisan migrate
+*****************************************************************
+git checkout -b dependencias
+git branch
+git status
+
+git add .
+git commit -m "Instalando dependencias"
+git push origin dependencias
+->Click en boton Merge pull request
