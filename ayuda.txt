@@ -61,6 +61,17 @@ git branch
 git status
 
 git add .
-git commit -m "Instalando dependencias"
-git push origin dependencias
+git commit -m "Creando las migraciones"
+git push origin modelo
 ->Click en boton Merge pull request
+*****************************************************************
+git checkout -b relaciones
+git branch
+git status
+
+git add .
+git commit -m "Creando las relaciones con eloquent"
+git push origin relaciones
+->Click en boton Merge pull request
+*****************************************************************
+
