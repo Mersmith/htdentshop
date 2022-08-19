@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Imagen>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Subcategoria>
  */
-class ImagenFactory extends Factory
+class SubcategoriaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,7 @@ class ImagenFactory extends Factory
     {
         return [
             //
-            'ruta' => 'productos/' . $this->faker->image('public/storage/productos', 640, 480, null, false)
+            'imagen' => 'subcategorias/' . $this->faker->image('public/storage/subcategorias', 640, 480, null, false) //imagen1.jpg
 
         ];
     }

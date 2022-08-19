@@ -18,6 +18,8 @@ class MarcaFactory extends Factory
     {
         return [
             //
+            'nombre'=>$this->faker->word()
+
         ];
     }
 }
