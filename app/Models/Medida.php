@@ -18,7 +18,7 @@ class Medida extends Model
 
     //Una talla puede tener muchos colores e inversa
     //Relación muchos a muchos
-    public function coloress()
+    public function colores()
     {
         return $this->belongsToMany(Color::class);
     }

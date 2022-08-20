@@ -162,3 +162,17 @@ git commit -m "Interación con Alpine js y sidebar"
 git push origin 7_menuprincipal
 ->Click en boton Merge pull request
 *****************************************************************
+php artisan make:livewire categoria-productos
+php artisan make:controller InicioController
+->instalar glider js
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+<script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+*****************************************************************
+git checkout -b 8_configuracion_glider
+git branch
+git status
+
+git add .
+git commit -m "Configuran la libreria glider para los productos"
+git push origin 8_configuracion_glider
+->Click en boton Merge pull request

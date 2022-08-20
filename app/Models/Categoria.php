@@ -30,4 +30,6 @@ class Categoria extends Model
     {
         return $this->hasManyThrough(Producto::class, Subcategoria::class);
     }
+
+    
 }
