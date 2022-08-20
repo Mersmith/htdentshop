@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('color_id')->references('id')->on('colors');
 
             $table->unsignedBigInteger('producto_id');
-            $table->foreign('producto_id')->references('id')->on('productos');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
 
             $table->timestamps();
         });
