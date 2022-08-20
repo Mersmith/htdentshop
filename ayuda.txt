@@ -176,3 +176,13 @@ git add .
 git commit -m "Configuran la libreria glider para los productos"
 git push origin 8_configuracion_glider
 ->Click en boton Merge pull request
+*****************************************************************
+->Se reconfiguro las migraciones, modelos, seeder y faker
+git checkout -b 9_slider_productos_inicio
+git branch
+git status
+
+git add .
+git commit -m "Creando el slider de los productos en inicio"
+git push origin 9_slider_productos_inicio
+->Click en boton Merge pull request

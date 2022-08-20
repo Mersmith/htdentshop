@@ -19,10 +19,10 @@ return new class extends Migration
             $table->integer('cantidad');
 
             $table->unsignedBigInteger('color_id');
-            $table->foreign('color_id')->references('id')->on('colors');
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
 
             $table->unsignedBigInteger('medida_id');
-            $table->foreign('medida_id')->references('id')->on('medidas');
+            $table->foreign('medida_id')->references('id')->on('medidas')->onDelete('cascade');
 
             $table->timestamps();
         });

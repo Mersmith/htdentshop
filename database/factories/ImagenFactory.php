@@ -18,7 +18,7 @@ class ImagenFactory extends Factory
     {
         return [
             //
-            'ruta' => 'productos/' . $this->faker->image('public/storage/productos', 640, 480, null, false)
+            'url' => 'productos/' . $this->faker->image('public/storage/productos', 640, 480, null, false)
 
         ];
     }

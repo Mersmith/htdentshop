@@ -6,14 +6,20 @@
         </div>
         @livewire('categoria-productos', ['categoria' => $categorias->first()])
     </div>
-    <script>
-        new Glider(document.querySelector('.glider'), {
-            slidesToShow: 3,
-            dots: '#dots',
-            arrows: {
-                prev: '.glider-prev',
-                next: '.glider-next'
-            }
-        });
-    </script>
+    @push('script')
+        <script>
+            Livewire.on('glider', function() {
+                new Glider(document.querySelector('.glider'), {
+                    slidesToShow: 5,
+                    dots: '#dots',
+                    draggable: true,
+                    dots: '.dots',
+                    arrows: {
+                        prev: '.glider-prev',
+                        next: '.glider-next'
+                    }
+                });
+            })
+        </script>
+    @endpush
 </x-app-layout>

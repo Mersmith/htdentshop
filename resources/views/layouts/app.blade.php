@@ -44,6 +44,7 @@
 
     <!--<script src="{{ asset('Inicio/js/menu-principal.js') }}"></script>-->
     @livewireScripts
+    @stack('script')
 </body>
 
 </html>

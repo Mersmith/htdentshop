@@ -42,6 +42,6 @@ class Producto extends Model
     //Metodo de su modelo
     public function imagenes()
     {
-        return $this->morphMany(Imagen::class, "imagen");
+        return $this->morphMany(Imagen::class, "imageable");
     }
 }

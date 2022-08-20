@@ -17,10 +17,10 @@ class ProductoSeeder extends Seeder
     public function run()
     {
         //
-        Producto::factory(50)->create()->each(function (Producto $producto) {
+        Producto::factory(20)->create()->each(function (Producto $producto) {
             Imagen::factory(1)->create([
-                'imagen_tipo_id' => $producto->id,
-                'imagen_tipo' => Producto::class
+                'imageable_id' => $producto->id,
+                'imageable_type' => Producto::class
             ]);
         });
     }
