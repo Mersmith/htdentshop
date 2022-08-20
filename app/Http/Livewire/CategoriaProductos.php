@@ -12,8 +12,8 @@ class CategoriaProductos extends Component
 
     public function loadProductos()
     {
-        $this->productos = $this->categoria->productos;
-        $this->emit('glider');
+        $this->productos = $this->categoria->productos()->where('estado', 2)->take(15)->get();
+        $this->emit('glider', $this->categoria->id);
     }
 
     public function render()

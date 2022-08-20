@@ -2,10 +2,10 @@
 
     @if (count($productos))
         <div class="glider-contain">
-            <div class="glider">
+            <div class="glider-{{ $categoria->id }}">
                 {{-- @foreach ($categoria->productos as $producto) --}}
                 @foreach ($productos as $producto)
-                    <li {{ $loop->last ? '' : 'mr-4' }}>
+                    <li {{ $loop->last ? '' : 'sm:mr-4' }}>
                         <figure>
                             <img src="{{ Storage::url($producto->imagenes->first()->url) }}" alt="">
                         </figure>
