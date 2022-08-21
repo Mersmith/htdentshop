@@ -177,7 +177,6 @@ git commit -m "Configuran la libreria glider para los productos"
 git push origin 8_configuracion_glider
 ->Click en boton Merge pull request
 *****************************************************************
-->Se reconfiguro las migraciones, modelos, seeder y faker
 git checkout -b 9_slider_productos_inicio
 git branch
 git status
@@ -191,7 +190,6 @@ php -S localhost:8000 -t public/
 php artisan livewire:publish
 'asset_url' => url('/')
 *****************************************************************
-->Se reconfiguro las migraciones, modelos, seeder y faker
 git checkout -b 10_slider_categorias_inicio
 git branch
 git status
@@ -200,3 +198,21 @@ git add .
 git commit -m "Creando el slider de las categoria pagina inicio"
 git push origin 10_slider_categorias_inicio
 ->Click en boton Merge pull request
+*****************************************************************
+php artisan make:controller CategoriaController
+->Problema al crear categoriacontroller por la url en el livewire
+php artisan make:livewire categoria-filtro
+*****************************************************************
+php -S localhost:8000 -t public/
+php artisan livewire:publish
+'asset_url' => url('/')
+*****************************************************************
+git checkout -b 11_pagina_categorias
+git branch
+git status
+
+git add .
+git commit -m "Creando la pagina categorias"
+git push origin 11_pagina_categorias
+->Click en boton Merge pull request
+*****************************************************************

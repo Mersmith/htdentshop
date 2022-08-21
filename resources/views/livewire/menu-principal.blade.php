@@ -1,5 +1,6 @@
 <header class="contenedor_navbar" x-data="sidebar()">
-
+    @php
+    $saludo = 'Hola como estan'; @endphp
     <!-- NAVBAR -->
     <nav class="navbar">
         <!-- HAMBURGUESA -->
@@ -21,7 +22,7 @@
                     src="{{ asset('Inicio/imagenes/icono-cerrar.svg') }}" alt="" />
             </div>
             <!-- MENU-PRINCIPAL -->
-            <x-menu-principal-links :categorias="$categorias"  />
+            <x-menu-principal-links :categorias="$categorias" />
         </div>
         <div class="contenedor_iconos">
             <img class="icono_ecommerce" src="{{ asset('Inicio/imagenes/icono-favorito.svg') }}" alt="" />
