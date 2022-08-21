@@ -203,10 +203,6 @@ php artisan make:controller CategoriaController
 ->Problema al crear categoriacontroller por la url en el livewire
 php artisan make:livewire categoria-filtro
 *****************************************************************
-php -S localhost:8000 -t public/
-php artisan livewire:publish
-'asset_url' => url('/')
-*****************************************************************
 git checkout -b 11_pagina_categorias
 git branch
 git status
@@ -214,5 +210,23 @@ git status
 git add .
 git commit -m "Creando la pagina categorias"
 git push origin 11_pagina_categorias
+->Click en boton Merge pull request
+*****************************************************************
+php artisan make:controller ProductoController
+composer require jenssegers/date
+php artisan make:livewire agregar-carrito-producto
+php artisan make:livewire agregar-carrito-producto-color
+php artisan make:livewire agregar-carrito-producto-medida
+*****************************************************************
+php artisan make:seeder ColorMedidaSeeder
+php artisan migrate:fresh --seed
+*****************************************************************
+git checkout -b 12_pagina_producto
+git branch
+git status
+
+git add .
+git commit -m "Creando la pagina producto solo"
+git push origin 12_pagina_producto
 ->Click en boton Merge pull request
 *****************************************************************

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ProductoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,8 @@ use App\Http\Controllers\CategoriaController;
 Route::get('/', InicioController::class);
 
 Route::get('categorias/{categoria}', [CategoriaController::class, 'show'])->name('categorias.show');
+
+Route::get('productos/{producto}', [ProductoController::class, 'show'])->name('productos.show');
 
 Route::middleware([
     'auth:sanctum',
