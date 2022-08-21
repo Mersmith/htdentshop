@@ -35,7 +35,7 @@ class Producto extends Model
     //Relación muchos a muchos
     public function colores()
     {
-        return $this->belongsToMany(Color::class);
+        return $this->belongsToMany(Color::class)->withPivot('cantidad');
     }
 
     //Relación uno a muchos polimoefica
@@ -44,4 +44,10 @@ class Producto extends Model
     {
         return $this->morphMany(Imagen::class, "imageable");
     }
+
+     //URl amigables
+     public function getRouteKeyName()
+     {
+         return 'ruta';
+     }
 }

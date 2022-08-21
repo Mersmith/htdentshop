@@ -49,7 +49,7 @@
                             <figure>
                                 <img src="{{ Storage::url($producto->imagenes->first()->url) }}" alt="">
                             </figure>
-                            <h2>{{ $producto->nombre }} </h2>
+                            <a href="{{route('productos.show', $producto)}}">{{ $producto->nombre }} </a>
                             <p>{{ $producto->precio }} </p>
                             <p>{{ Str::limit($producto->descripcion, 20) }} </p>
                         </li>
@@ -62,7 +62,7 @@
                             <figure>
                                 <img src="{{ Storage::url($producto->imagenes->first()->url) }}" alt="">
                             </figure>
-                            <h2>{{ $producto->nombre }} </h2>
+                            <a href="{{route('productos.show', $producto)}}">{{ $producto->nombre }} </a>
                             <p>{{ $producto->precio }} </p>
                             <p>{{ Str::limit($producto->descripcion, 20) }} </p>
                         </li>
