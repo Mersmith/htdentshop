@@ -31,5 +31,9 @@ class Categoria extends Model
         return $this->hasManyThrough(Producto::class, Subcategoria::class);
     }
 
-    
+    //URl amigables
+    public function getRouteKeyName()
+    {
+        return 'ruta';
+    }
 }

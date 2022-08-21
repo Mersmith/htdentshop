@@ -1,8 +1,10 @@
 <x-app-layout>
+
     <div>
         @foreach ($categorias as $categoria)
             <section>
                 <h1>{{ $categoria->nombre }}</h1>
+                <a href="{{ route('categorias.show', $categoria) }}">Ver más</a>
 
                 @livewire('categoria-productos', ['categoria' => $categoria])
             </section>
