@@ -1,4 +1,4 @@
-.icono {
+/*.icono {
     width: 20px;
 }
 
@@ -9,7 +9,7 @@
 .icono-rotacion-derecha {
     transform: rotate(270deg);
 }
-
+*/
 /*INICIO ESTILOS GRID TEMPLATE*/
 .contenedor_navbar {
     /*position: fixed;*/
@@ -22,7 +22,6 @@
     align-items: center;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     z-index: 50;
-
 }
 
 nav {
@@ -31,15 +30,15 @@ nav {
     width: 100%;
     background: white;
     z-index: 99;
-    max-width: 1250px;
+    /*max-width: 1270px;*/
 }
 
 .navbar {
     display: grid;
     grid-template-areas:
         "contenedor_logo  contenedor_menu_link  contenedor_iconos";
-    grid-template-rows: 130px;
-    grid-template-columns: 250px 1fr 200px;
+    grid-template-rows: 230px;
+    grid-template-columns: 20% 1fr 24%;
 }
 
 .contenedor_hamburguesa {
@@ -72,13 +71,25 @@ nav {
     align-items: center;
 }
 
+
+.contenedor_iconos i {
+    font-size: 40px;   
+    cursor: pointer; 
+}
+
 /*FIN ESTILOS GRID TEMPLATE*/
+.monto_total {
+    font-size: 28px;
+    font-weight: 700;
+    color: #8e8e8e;
+}
+
 .contenedor_contactos div {
     display: flex;
 }
 
 .navbar .contenedor_logo img {
-    width: 170px;
+    width: 160px;
 }
 
 .navbar .contenedor_menu_link .sidebar_logo {
@@ -91,11 +102,12 @@ nav {
     width: 100%;
     height: 100%;
     align-items: center;
+    justify-content: space-around;
 }
 
 .navbar .contenedor_menu_link .menu_principal .menu_icono {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .navbar .contenedor_menu_link .menu_principal li {
@@ -121,15 +133,21 @@ nav {
 .navbar .contenedor_menu_link .menu_principal li a {
     text-decoration: none;
     white-space: nowrap;
-    color: #333;
-    font-size: 15px;
-    font-weight: 500;
+    color: #8e8e8e;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.navbar .contenedor_menu_link .menu_principal li i {
+    font-size: 22px;
+    margin-left: 8px;
+    color: #00a4df;
 }
 
 /*SUBMENU 1*/
 .navbar .menu_principal li .submenu_1 {
     position: absolute;
-    top: 80px;
+    top: 130px;
     left: 0;
     line-height: 40px;
     background: white;
@@ -197,7 +215,7 @@ nav .menu_principal .submenu_3 li:hover .submenu_4_activo {
     .contenedor_iconos {
         border-bottom: 1px solid rgba(129, 129, 129, .2);
     }
- 
+
     .menu_principal {
         flex-direction: column;
     }

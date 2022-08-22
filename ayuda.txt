@@ -230,3 +230,15 @@ git commit -m "Creando la pagina producto solo"
 git push origin 12_pagina_producto
 ->Click en boton Merge pull request
 *****************************************************************
+php artisan make:model Slider -m
+php artisan migrate
+-> imagenes/slider/slider1.jpg
+*****************************************************************
+git checkout -b 13_reestructuracion
+git branch
+git status
+
+git add .
+git commit -m "Reestructure las carpetas en frontend y admin"
+git push origin 13_reestructuracion
+->Click en boton Merge pull request
