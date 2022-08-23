@@ -10,7 +10,7 @@
         </div>
         <div class="col-span-4">
             <h1>{{ $producto->nombre }} </h1>
-            <p>Nombre: {{ $producto->marca->nombre }}</p>
+            <p>Marca: {{ $producto->marca->nombre }}</p>
             <p>Precio: {{ $producto->precio }}</p>
             <p>Recibelo el: {{ Date::now()->addDay(7)->locale('es')->format('l j F') }}</p>
 

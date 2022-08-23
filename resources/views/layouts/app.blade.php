@@ -27,8 +27,8 @@
         </main>
     </div>
 
+    @include('layouts.frontend.js')
     @stack('modals')
-
     @livewireScripts
     @stack('script')
 </body>

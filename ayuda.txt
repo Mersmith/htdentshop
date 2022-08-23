@@ -242,3 +242,22 @@ git add .
 git commit -m "Reestructure las carpetas en frontend y admin"
 git push origin 13_reestructuracion
 ->Click en boton Merge pull request
+*****************************************************************
+composer require bumbummen99/shoppingcart
+-> crear la carpeta helpers y crear funciones
+-> Modificamos el composer.json
+composer dump-autoload
+
+->Utilizando accesores
+
+php artisan make:model ColorMedida
+php artisan make:model ColorProducto
+*****************************************************************
+git checkout -b 14_carrito
+git branch
+git status
+
+git add .
+git commit -m "Carrito, stock"
+git push origin 14_carrito
+->Click en boton Merge pull request

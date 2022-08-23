@@ -29,7 +29,8 @@
         </x-jet-secondary-button>
     </div>
     <div>
-        <x-boton-agregar x-bind:disabled="!$wire.stockProducto" color="orange">
+        <x-boton-agregar x-bind:disabled="$wire.cantidadCarrito > $wire.stockProducto" x-bind:disabled="!$wire.stockProducto" wire:click="agregarProducto"
+            wire:loading.attr="disabled" wire:target="agregarProducto" color="orange">
             Agregar al carrito
         </x-boton-agregar>
     </div>

@@ -11,6 +11,9 @@
 
 <!-- Styles -->
 <link rel="stylesheet" href="{{ asset('Inicio/css/menu-principal.css') }}">
+<link rel="stylesheet" href="{{ asset('Inicio/css/slider-principal.css') }}">
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.6.6/glider.min.css"
     integrity="sha512-YM6sLXVMZqkCspZoZeIPGXrhD9wxlxEF7MzniuvegURqrTGV2xTfqq1v9FJnczH+5OGFl5V78RgHZGaK34ylVg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
