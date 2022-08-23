@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InicioController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\Frontend\InicioController;
+use App\Http\Controllers\Frontend\CategoriaController;
+use App\Http\Controllers\Frontend\ProductoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +15,7 @@ use App\Http\Controllers\ProductoController;
 |
 */
 
-Route::get('/', InicioController::class);
+Route::get('/', InicioController::class)->name('inicio');
 
 Route::get('categorias/{categoria}', [CategoriaController::class, 'show'])->name('categorias.show');
 

@@ -6,23 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>@yield('tituloPagina')</title>
+    @include('layouts.frontend.css')
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.6.6/glider.min.js"
-        integrity="sha512-RidPlemZ+Xtdq62dXb81kYFycgFQJ71CKg+YbKw+deBWB0TLIqCraOn6k0CWDH2rGvE1a8ruqMB+4E4OLVJ7Dg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('Inicio/css/menu-principal.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.6.6/glider.min.css"
-        integrity="sha512-YM6sLXVMZqkCspZoZeIPGXrhD9wxlxEF7MzniuvegURqrTGV2xTfqq1v9FJnczH+5OGFl5V78RgHZGaK34ylVg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     @livewireStyles
 </head>
 
@@ -30,9 +19,7 @@
     <x-jet-banner />
 
     <div class="min-h-screen bg-gray-100">
-        @livewire('menu-principal')
-
-
+        @livewire('frontend.menu-principal')
 
         <!-- Page Content -->
         <main>
@@ -42,7 +29,6 @@
 
     @stack('modals')
 
-    <!--<script src="{{ asset('Inicio/js/menu-principal.js') }}"></script>-->
     @livewireScripts
     @stack('script')
 </body>

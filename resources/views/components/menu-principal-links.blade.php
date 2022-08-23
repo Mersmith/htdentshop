@@ -2,20 +2,21 @@
 
 <ul class="menu_principal">
     <!-- INICIO -->
-    <li><a href="#">Inicio</a></li>
+    <li><a href="{{ route('inicio') }}">Inicio</a></li>
     <!-- Equipos intraorales -->
     <li>
         <div class="menu_icono">
             <a href="#">Equipos intraorales</a>
-            <img class="icono-rotacion-arriba icono" src="{{ asset('Inicio/imagenes/icono-abajo.svg') }}" alt="" />
+            {{-- <img class="icono-rotacion-arriba icono" src="{{ asset('Inicio/imagenes/icono-abajo.svg') }}" alt="" /> --}}
+            <i class="fa-solid fa-sort-down"></i>
+
         </div>
         <!-- SUBMENU-1 -->
         <ul class="submenu_1 submenu_1_activo">
             <li class="lista_menu_productos">
                 <div class="menu_icono">
                     <a href="#">Rayos x Portatil</a>
-                    <img class="sub-sub-menu icono icono-rotacion-derecha"
-                        src="{{ asset('Inicio/imagenes/icono-abajo.svg') }}" alt="" />
+                    <i class="fa-solid fa-sort-down"></i>
                 </div>
                 <!-- SUBMENU-2 -->
                 <ul class="submenu_2 submenu_2_activo">
@@ -27,8 +28,7 @@
             <li class="lista_menu_productos">
                 <div class="menu_icono">
                     <a href="#">Sensor RVG</a>
-                    <img class="sub-sub-menu icono icono-rotacion-derecha"
-                        src="{{ asset('Inicio/imagenes/icono-abajo.svg') }}" alt="" />
+                    <i class="fa-solid fa-sort-down"></i>
                 </div>
                 <!-- SUBMENU-2 -->
                 <ul class="submenu_2 submenu_2_activo">
@@ -100,8 +100,7 @@
     <li>
         <div class="menu_icono">
             <a href="#">Equipos extraorales</a>
-            <img class="icono-rotacion-arriba icono" src="{{ asset('Inicio/imagenes/icono-abajo.svg') }}"
-                alt="" />
+            <i class="fa-solid fa-sort-down"></i>
         </div>
         <!-- SUBMENU-1 -->
         <ul class="submenu_1 submenu_1_activo">
@@ -180,8 +179,7 @@
     <li>
         <div class="menu_icono">
             <a href="#">Implantes</a>
-            <img class="icono-rotacion-arriba icono" src="{{ asset('Inicio/imagenes/icono-abajo.svg') }}"
-                alt="" />
+            <i class="fa-solid fa-sort-down"></i>
         </div>
         <!-- SUBMENU-1 -->
         <ul class="submenu_1 submenu_1_activo">
@@ -342,8 +340,7 @@
     <li>
         <div class="menu_icono">
             <a href="#">Materiales</a>
-            <img class="icono-rotacion-arriba icono" src="{{ asset('Inicio/imagenes/icono-abajo.svg') }}"
-                alt="" />
+            <i class="fa-solid fa-sort-down"></i>
         </div>
         <!-- SUBMENU-1 -->
         <ul class="submenu_1 submenu_1_activo">
