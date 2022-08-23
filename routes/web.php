@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\InicioController;
 use App\Http\Controllers\Frontend\CategoriaController;
 use App\Http\Controllers\Frontend\ProductoController;
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +22,13 @@ Route::get('/', InicioController::class)->name('inicio');
 Route::get('categorias/{categoria}', [CategoriaController::class, 'show'])->name('categorias.show');
 
 Route::get('productos/{producto}', [ProductoController::class, 'show'])->name('productos.show');
+
+Route::get('prueba', function () {
+    Cart::destroy();
+    //prueba
+});
+
+
 
 Route::middleware([
     'auth:sanctum',
