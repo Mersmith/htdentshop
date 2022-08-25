@@ -261,3 +261,17 @@ git add .
 git commit -m "Carrito, stock"
 git push origin 14_carrito
 ->Click en boton Merge pull request
+******************************************************************
+php artisan make:livewire frontend.carrito-compras
+php artisan make:livewire frontend.actualizar-carrito-item
+php artisan make:livewire frontend.actualizar-carrito-item-color
+php artisan make:livewire frontend.actualizar-carrito-item-medida
+*****************************************************************
+git checkout -b 15_carrito_pagina
+git branch
+git status
+
+git add .
+git commit -m "Crud de la pagina carrito de compras"
+git push origin 15_carrito_pagina
+->Click en boton Merge pull request

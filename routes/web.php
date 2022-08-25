@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\InicioController;
 use App\Http\Controllers\Frontend\CategoriaController;
 use App\Http\Controllers\Frontend\ProductoController;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Livewire\Frontend\CarritoCompras;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,12 @@ Route::get('categorias/{categoria}', [CategoriaController::class, 'show'])->name
 
 Route::get('productos/{producto}', [ProductoController::class, 'show'])->name('productos.show');
 
+//Eliminar el carrito
 Route::get('prueba', function () {
     Cart::destroy();
-    //prueba
 });
 
-
+Route::get('carrito-compras', CarritoCompras::class)->name('carrito-compras');
 
 Route::middleware([
     'auth:sanctum',

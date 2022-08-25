@@ -11,13 +11,20 @@ class AgregarCarritoProducto extends Component
 {
     public $producto, $stockProducto;
     public $cantidadCarrito = 1;
-    public $opciones = ['color_id' => null, 'medida_id' => null];
+    public $opciones = ['color_id' => null, 'medida_id' => null, 'cantidad' => null];
 
     public function mount()
     {
         //$this->stockProducto = $this->producto->cantidad;
         $this->stockProducto = calculandoProductosDisponibles($this->producto->id);
         $this->opciones["imagen"] = Storage::url($this->producto->imagenes->first()->url);
+
+        if ($this->producto->cantidad) {
+            $this->opciones["cantidad"] = $this->producto->cantidad;
+        } else {
+            $this->opciones["cantidad"] = $this->producto->stock;
+
+        }
     }
 
     public function render()
