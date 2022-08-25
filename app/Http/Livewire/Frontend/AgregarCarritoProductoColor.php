@@ -13,7 +13,7 @@ class AgregarCarritoProductoColor extends Component
     public $cantidadCarrito = 1;
     public $stockProducto = 0;
 
-    public $opciones = ['medida_id' => null];
+    public $opciones = ['medida_id' => null, 'cantidad' => null];
 
 
     //mount palabra reserveda, carga al iniciar la página
@@ -30,6 +30,8 @@ class AgregarCarritoProductoColor extends Component
         //$this->stockProducto = $color->pivot->cantidad;
         $this->stockProducto = calculandoProductosDisponibles($this->producto->id, $color->id);
         $this->opciones["color"] = $color->nombre;
+        $this->opciones["cantidad"] = calculandoStockProductos($this->producto->id, $color->id);
+
     }
 
     public function render()

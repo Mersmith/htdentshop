@@ -11,6 +11,9 @@
                 <span class="absolute top-0 right-0 inline-block w-2 h-2 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full"></span> --}}
             </span>
         </x-slot>
+
+
+
         <x-slot name="content">
             <ul>
                 @forelse (Cart::content() as $item)
@@ -39,12 +42,14 @@
                     <p>Total: USD {{ Cart::subtotal() }} </p>
                 </div>
                 <div>
-                    <x-boton-ir-carrito>
+                    <x-boton-ir-carrito href="{{route('carrito-compras')}}">
                         Ir al carrito
                     </x-boton-ir-carrito>
                 </div>
             @endif
 
         </x-slot>
+
+        
     </x-jet-dropdown>
 </div>

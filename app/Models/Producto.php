@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,22 @@ class Producto extends Model
 
     const BORRADOR = 1;
     const PUBLICADO = 2;
+
+    //Accesores
+    public function getStockAttribute()
+    {
+        if ($this->subcategoria->medida) {
+            return ColorMedida::whereHas('medida.producto', function (Builder $query) {
+                $query->where('id', $this->id);
+            })->sum('cantidad');
+        } elseif ($this->subcategoria->color) {
+            return ColorProducto::whereHas('producto', function (Builder $query) {
+                $query->where('id', $this->id);
+            })->sum('cantidad');
+        } else {
+            return $this->cantidad;
+        }
+    }
 
     //Relación uno a muchos
     public function medidas()
@@ -45,9 +62,9 @@ class Producto extends Model
         return $this->morphMany(Imagen::class, "imageable");
     }
 
-     //URl amigables
-     public function getRouteKeyName()
-     {
-         return 'ruta';
-     }
+    //URl amigables
+    public function getRouteKeyName()
+    {
+        return 'ruta';
+    }
 }

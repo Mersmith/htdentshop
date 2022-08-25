@@ -19,12 +19,17 @@ class AgregarCarritoProductoMedida extends Component
     public $cantidadCarrito = 1;
     public $stockProducto = 0;
 
-    public $opciones = [];
+    public $opciones = ['cantidad' => null];
 
     public function mount()
     {
         $this->medidas = $this->producto->medidas;
         $this->opciones["imagen"] = Storage::url($this->producto->imagenes->first()->url);
+        if ($this->producto->cantidad) {
+            $this->opciones["cantidad"] = $this->producto->cantidad;
+        } else {
+            $this->opciones["cantidad"] = $this->producto->stock;
+        }
     }
 
     public function render()
