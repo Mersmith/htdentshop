@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('cantidad');
 
             $table->unsignedBigInteger('color_id');
-            $table->foreign('color_id')->references('id')->on('colors');
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
 
             $table->unsignedBigInteger('producto_id');
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');

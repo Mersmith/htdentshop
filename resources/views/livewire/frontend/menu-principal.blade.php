@@ -48,6 +48,10 @@
                                 {{ __('Perfil') }}
                             </x-jet-dropdown-link>
 
+                            <x-jet-dropdown-link href="{{ route('admin.index') }}">
+                                Administrador
+                            </x-jet-dropdown-link>
+
                             <div class="border-t border-gray-100"></div>
 
                             <!-- Authentication -->
@@ -65,7 +69,7 @@
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         {{-- <img class="icono_ecommerce" src="{{ asset('Inicio/imagenes/icono-usuario.svg') }}" alt="" /> --}}
-                        <i class="fa-solid fa-user"  style="color: #666666;"></i>
+                        <i class="fa-solid fa-user" style="color: #666666;"></i>
                     </x-slot>
                     <x-slot name="content">
                         <x-jet-dropdown-link href="{{ route('login') }}">
@@ -79,10 +83,10 @@
                 </x-jet-dropdown>
 
             @endauth
-            <i class="fa-solid fa-heart"  style="color: #f49f47;"></i>
+            <i class="fa-solid fa-heart" style="color: #f49f47;"></i>
 
             {{-- <img class="icono_ecommerce" src="{{ asset('Inicio/imagenes/icono-carrito.svg') }}" alt="" /> --}}
-           @livewire('frontend.menu-carrrito')
+            @livewire('frontend.menu-carrrito')
         </div>
     </nav>
 
