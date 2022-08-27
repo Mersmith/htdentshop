@@ -26,10 +26,10 @@ return new class extends Migration
             $table->enum('estado', [Producto::BORRADOR, Producto::PUBLICADO])->default(Producto::BORRADOR);
 
             $table->unsignedBigInteger('subcategoria_id');
-            $table->foreign('subcategoria_id')->references('id')->on('subcategorias');
+            $table->foreign('subcategoria_id')->references('id')->on('subcategorias')->onDelete('cascade');
 
             $table->unsignedBigInteger('marca_id');
-            $table->foreign('marca_id')->references('id')->on('marcas');
+            $table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
 
             $table->timestamps();
         });

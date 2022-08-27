@@ -52,7 +52,7 @@ class Producto extends Model
     //Relación muchos a muchos
     public function colores()
     {
-        return $this->belongsToMany(Color::class)->withPivot('cantidad');
+        return $this->belongsToMany(Color::class)->withPivot('cantidad', 'id');
     }
 
     //Relación uno a muchos polimoefica

@@ -7,6 +7,8 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Models\Producto;
+use App\Observers\ProductoObserver;
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -28,6 +30,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Producto::observe(ProductoObserver::class);
     }
 
     /**

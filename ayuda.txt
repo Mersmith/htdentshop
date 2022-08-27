@@ -275,3 +275,39 @@ git add .
 git commit -m "Crud de la pagina carrito de compras"
 git push origin 15_carrito_pagina
 ->Click en boton Merge pull request
+*****************************************************************
+php artisan make:livewire Admin\MostrarProductos
+php artisan make:livewire Admin\CrearProducto
+->utilizar plugin ckeditor
+<script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+php artisan make:livewire Admin\EditarProducto
+
+php artisan make:livewire Admin\MedidaProducto
+php artisan make:livewire Admin\ColorProducto
+->Instalar <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+php artisan make:livewire Admin\ColorMedida
+
+->agregar Dropzone
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js" integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+php artisan make:controller Admin\ProductoController
+
+php artisan make:observer ProductoObserver
+
+php artisan make:livewire Admin\EstadoProducto
+
+php artisan make:controller Admin\CategoriaController
+
+php artisan make:component AdminLayout
+*****************************************************************
+*****************************************************************
+git checkout -b 16_Crud_producto
+git branch
+git status
+
+git add .
+git commit -m "Crud de agregar productos"
+git push origin 16_Crud_producto
+->Click en boton Merge pull request
