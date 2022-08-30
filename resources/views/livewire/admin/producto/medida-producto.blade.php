@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                @livewire('admin.color-medida', ['medida' => $medida], key('color-medida-' . $medida->id))
+                @livewire('admin.producto.color-medida', ['medida' => $medida], key('color-medida-' . $medida->id))
             </li>
         @endforeach
     </ul>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Producto;
 
 use App\Models\Categoria;
 use App\Models\Marca;
@@ -89,6 +89,6 @@ class CrearProducto extends Component
 
     public function render()
     {
-        return view('livewire.admin.crear-producto')->layout('layouts.admin');
+        return view('livewire.admin.producto.crear-producto')->layout('layouts.admin');
     }
 }

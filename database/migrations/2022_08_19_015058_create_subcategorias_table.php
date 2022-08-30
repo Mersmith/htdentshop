@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('nombre');
             $table->string('ruta');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->boolean('color')->default(false);
             $table->boolean('medida')->default(false);
 

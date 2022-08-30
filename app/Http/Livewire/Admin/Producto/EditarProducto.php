@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Producto;
 
 use App\Models\Marca;
 use App\Models\Categoria;
@@ -127,6 +127,6 @@ class EditarProducto extends Component
 
     public function render()
     {
-        return view('livewire.admin.editar-producto')->layout('layouts.admin');
+        return view('livewire.admin.producto.editar-producto')->layout('layouts.admin');
     }
 }

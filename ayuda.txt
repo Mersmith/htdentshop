@@ -88,6 +88,13 @@ php artisan migrate:fresh --seed
 vendor\fakerphp\faker\src\Faker\Provider\Image.php
 $baseUrl = "https://picsum.photos/";
 
+public const BASE_URL = 'https://placehold.jp';  // cambie la URL 
+
+curl_setopt($ch, CURLOPT_FILE, $fp); //línea existente
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);//nueva línea
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//nueva línea
+$success = curl_exec($ch) && curl_getinfo($ch, CURLINFO_HTTP_CODE) === 200;//línea existente
+
 php artisan migrate:fresh --seed
 
 php artisan make:factory SubcategoriaFactory
@@ -302,7 +309,6 @@ php artisan make:controller Admin\CategoriaController
 
 php artisan make:component AdminLayout
 *****************************************************************
-*****************************************************************
 git checkout -b 16_Crud_producto
 git branch
 git status
@@ -311,3 +317,23 @@ git add .
 git commit -m "Crud de agregar productos"
 git push origin 16_Crud_producto
 ->Click en boton Merge pull request
+***********************30/08/22******************************************
+php artisan make:livewire Admin\Categoria\mostrar-categoria
+php artisan make:livewire Admin\Categoria\crear-categoria
+php artisan make:seeder SliderSeeder
+php artisan make:factory SliderFactory
+php artisan make:factory SliderFactory --model=Slider
+
+php artisan make:livewire Admin\Marca\mostrar-marca
+*****************************************************************
+
+
+git checkout -b 17_Crud_categoria_subcategoria_marca
+git branch
+git status
+
+git add .
+git commit -m "Crud de categoria, subcategoria y marca."
+git push origin 17_Crud_categoria_subcategoria_marca
+->Click en boton Merge pull request
+*****************************************************************

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Producto;
 
 use Livewire\Component;
 use App\Models\Color;
@@ -89,6 +89,6 @@ class ColorMedida extends Component
     {
         $medida_colores = $this->medida->colores;
 
-        return view('livewire.admin.color-medida', compact('medida_colores'));
+        return view('livewire.admin.producto.color-medida', compact('medida_colores'));
     }
 }

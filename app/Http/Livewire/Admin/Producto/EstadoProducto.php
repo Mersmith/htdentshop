@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Producto;
 
 use Livewire\Component;
 
@@ -22,6 +22,6 @@ class EstadoProducto extends Component
 
     public function render()
     {
-        return view('livewire.admin.estado-producto');
+        return view('livewire.admin.producto.estado-producto');
     }
 }
