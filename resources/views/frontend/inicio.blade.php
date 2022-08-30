@@ -9,7 +9,7 @@
                 <h1>{{ $categoria->nombre }}</h1>
                 <a href="{{ route('categorias.show', $categoria) }}">Ver más</a>
 
-                @livewire('frontend.categoria-productos', ['categoria' => $categoria])
+                @livewire('frontend.categoria.categoria-productos', ['categoria' => $categoria])
 
             </section>
         @endforeach

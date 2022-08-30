@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Categoria;
 
 use Livewire\Component;
 
@@ -18,6 +18,6 @@ class CategoriaProductos extends Component
 
     public function render()
     {
-        return view('livewire.frontend.categoria-productos');
+        return view('livewire.frontend.categoria.categoria-productos');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Producto;
 
 use Livewire\Component;
 use App\Models\Color;
@@ -84,6 +84,6 @@ class ColorProducto extends Component
     {
         $producto_colores = $this->producto->colores;
 
-        return view('livewire.admin.color-producto', compact('producto_colores'));
+        return view('livewire.admin.producto.color-producto', compact('producto_colores'));
     }
 }

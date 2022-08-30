@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Producto;
 
 use App\Models\Medida;
 use Livewire\Component;
@@ -71,6 +71,6 @@ class MedidaProducto extends Component
     {
         $medidas = $this->producto->medidas;
 
-        return view('livewire.admin.medida-producto', compact('medidas'));
+        return view('livewire.admin.producto.medida-producto', compact('medidas'));
     }
 }

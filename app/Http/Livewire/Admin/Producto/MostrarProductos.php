@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Producto;
 
 use App\Models\Producto;
 use Livewire\Component;
@@ -13,13 +13,14 @@ class MostrarProductos extends Component
 
     public $buscarProducto;
 
-    public function updatingBuscarProducto(){
+    public function updatingBuscarProducto()
+    {
         $this->resetPage();
     }
 
     public function render()
     {
         $productos = Producto::where('nombre', 'like', '%' . $this->buscarProducto . '%')->paginate(10);
-        return view('livewire.admin.mostrar-productos', compact('productos'))->layout('layouts.admin');
+        return view('livewire.admin.producto.mostrar-productos', compact('productos'))->layout('layouts.admin');
     }
 }

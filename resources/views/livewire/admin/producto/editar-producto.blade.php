@@ -49,7 +49,7 @@
         @endif
 
 
-        @livewire('admin.estado-producto', ['producto' => $producto], key('estado-producto-' . $producto->id))
+        @livewire('admin.producto.estado-producto', ['producto' => $producto], key('estado-producto-' . $producto->id))
 
         {{-- <div class="bg-white shadow-xl rounded-lg p-6">
 
@@ -177,11 +177,11 @@
 
             @if ($this->subcategoria->medida)
 
-                @livewire('admin.medida-producto', ['producto' => $producto], key('medida-producto-' . $producto->id))
+                @livewire('admin.producto.medida-producto', ['producto' => $producto], key('medida-producto-' . $producto->id))
 
             @elseif($this->subcategoria->color)
 
-                @livewire('admin.color-producto', ['producto' => $producto], key('color-producto-' . $producto->id))
+                @livewire('admin.producto.color-producto', ['producto' => $producto], key('color-producto-' . $producto->id))
 
             @endif
 
@@ -223,7 +223,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
 
-                        Livewire.emitTo('admin.edit-producto', 'delete');
+                        Livewire.emitTo('admin.producto.edit-producto', 'delete');
 
                         Swal.fire(
                             'Deleted!',
@@ -248,7 +248,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
 
-                        Livewire.emitTo('admin.medida-producto', 'delete', sizeId);
+                        Livewire.emitTo('admin.producto.medida-producto', 'delete', sizeId);
 
                         Swal.fire(
                             'Deleted!',
@@ -272,7 +272,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
 
-                        Livewire.emitTo('admin.color-producto', 'delete', pivot);
+                        Livewire.emitTo('admin.producto.color-producto', 'delete', pivot);
 
                         Swal.fire(
                             'Deleted!',
@@ -295,7 +295,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
 
-                        Livewire.emitTo('admin.color-medida', 'delete', pivot);
+                        Livewire.emitTo('admin.producto.color-medida', 'delete', pivot);
 
                         Swal.fire(
                             'Deleted!',
