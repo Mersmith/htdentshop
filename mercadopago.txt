@@ -1,0 +1,54 @@
+***********************30/08/22******************************************
+Credenciales de la Aplicaion de prueba
+Public Key
+TEST-aba4707f-1bce-46c4-88be-5992ae67364d
+Access Token
+TEST-3413387778623520-083022-d1d0a8a4ece0439d454396383d77ae09-477855099
+
+
+https://www.mercadopago.com.pe/developers/es/reference/test_user/_users_test/post
+
+curl -X POST \
+      'https://api.mercadopago.com/users/test' \
+      -H 'Authorization: Bearer TEST-3413387778623520-083022-d1d0a8a4ece0439d454396383d77ae09-477855099' \
+      -H 'Content-Type: application/json' \ 
+      -d '{
+  "site_id": "MPE",
+  "description": "a description"
+}'
+
+->Pegar en Gitbash
+https://reqbin.com/curl
+https://www.mercadolibre.com/jms/mpe/lgz/msl/login/H4sIAAAAAAAEAzWNQQ7DIBAD_-IzSu4c-xG0DQtBhSyCTWlV5e8Vqnq0bM98kCWmw-m7Miw8BzqzwqBm0iCtuORhUSoMelL-R54TalRYuXXYz-RE9jcO0iZJ2zk3dOruQpYB-zPBIHXHL-V2UHaD78_Esw2U-3xEgcWuWrtd1zHGUrht5KVSlGWTslTGZRCoq9NG2wN2uq4vIzpdj8oAAAA/user
+
+Usuario Vendedor:
+{
+    "id": 1189431842,
+    "nickname": "TETE5510295",
+    "password": "EjafuRbzkQ",
+    "site_status": "active",
+    "site_id": "MPE",
+    "description": "a description",
+    "date_created": "2022-08-30T23:52:23-04:00",
+    "date_last_updated": "2022-08-30T23:52:23-04:00"
+}
+
+HTDENTSHOPSTORE
+Public Key
+TEST-c526bf83-b85d-4cbb-b2c1-9c8f3dee3ba2
+
+Access Token
+TEST-8561333830862927-083023-a5468d8cea5c8defe2906e1ee16652a8-1189431842
+
+Usuario Comprador:
+{
+    "id": 1189433435,
+    "nickname": "TEST5TTGUNXL",
+    "password": "eIgn4eCmvx",
+    "site_status": "active",
+    "site_id": "MPE",
+    "description": "a description",
+    "date_created": "2022-08-30T23:50:49-04:00",
+    "date_last_updated": "2022-08-30T23:50:49-04:00"
+}
+

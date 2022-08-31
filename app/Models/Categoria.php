@@ -20,12 +20,14 @@ class Categoria extends Model
 
     //Muchas Categorias puede tener varias marcas
     //Relación muchos a muchos
+    //Una Categoria pertenece y tiene muchas Marcas
     public function marcas()
     {
         return $this->belongsToMany(Marca::class);
     }
 
     //Relación de una a mucho, a travez de la relación Subategoria
+    //Una Categoria tiene muchos Productos atreves de SubCategoria
     public function productos()
     {
         return $this->hasManyThrough(Producto::class, Subcategoria::class);

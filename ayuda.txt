@@ -367,4 +367,18 @@ git add .
 git commit -m "Pagina Orden de pago"
 git push origin 18_Pagina_Orden
 ->Click en boton Merge pull request
+***********************30/08/22******************************************
+https://www.mercadopago.com.pe/developers/es
+https://www.mercadopago.com.pe/developers/panel
+->Crear aplicacion
+->Elige el producto que vas a integrar: Checkout Pro
+
+git checkout -b 19_Credenciales_Mercadopago
+git branch
+git status
+
+git add .
+git commit -m "Credencias mercadopago del vendedor y comprador."
+git push origin 19_Credenciales_Mercadopago
+->Click en boton Merge pull request
 *****************************************************************
