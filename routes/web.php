@@ -6,6 +6,8 @@ use App\Http\Controllers\Frontend\CategoriaController;
 use App\Http\Controllers\Frontend\ProductoController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Livewire\Frontend\CarritoCompras;
+use App\Http\Livewire\Frontend\Orden\CrearOrden;
+use App\Http\Controllers\Frontend\OrdenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,9 @@ Route::get('prueba', function () {
 });
 
 Route::get('carrito-compras', CarritoCompras::class)->name('carrito-compras');
+
+Route::get('orden/crear', CrearOrden::class)->middleware('auth')->name('orden.crear');
+Route::get('orden/{orden}/pagar', [OrdenController::class, 'pagar'])->middleware('auth')->name('orden.pagar');
 
 Route::middleware([
     'auth:sanctum',

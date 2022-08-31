@@ -127,7 +127,7 @@
                     </div>
 
                     <div>
-                        <x-boton-ir-carrito href="#">
+                        <x-boton-ir-carrito href="{{route('orden.crear')}}">
                             Continuar
                         </x-boton-ir-carrito>
                     </div>

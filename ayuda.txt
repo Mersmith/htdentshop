@@ -336,4 +336,35 @@ git add .
 git commit -m "Crud de categoria, subcategoria y marca."
 git push origin 17_Crud_categoria_subcategoria_marca
 ->Click en boton Merge pull request
+***********************30/08/22******************************************
+php artisan make:livewire Frontend\Orden\crear-orden
+
+->Para guardar productos de carrito
+https://packagist.org/packages/bumbummen99/shoppingcart
+php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="migrations"
+
+php artisan migrate
+
+->Agregar eventos en EventServiceProvider
+php artisan event:generate
+
+php artisan make:model Departamento -mfs
+php artisan make:model Ciudad -mfs
+php artisan make:model Distrito -mfs
+php artisan make:model Orden -m
+
+php artisan migrate:fresh
+php artisan migrate:fresh --seed
+
+php artisan make:controller Frontend\OrdenController
+
+
+git checkout -b 18_Pagina_Orden
+git branch
+git status
+
+git add .
+git commit -m "Pagina Orden de pago"
+git push origin 18_Pagina_Orden
+->Click en boton Merge pull request
 *****************************************************************
