@@ -8,17 +8,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Livewire\Frontend\CarritoCompras;
 use App\Http\Livewire\Frontend\Orden\CrearOrden;
 use App\Http\Controllers\Frontend\OrdenController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\Frontend\WebhooksController;
+use App\Http\Livewire\Frontend\Orden\PagoOrden;
 
 Route::get('/', InicioController::class)->name('inicio');
 
@@ -33,8 +24,20 @@ Route::get('prueba', function () {
 
 Route::get('carrito-compras', CarritoCompras::class)->name('carrito-compras');
 
-Route::get('orden/crear', CrearOrden::class)->middleware('auth')->name('orden.crear');
-Route::get('orden/{orden}/pagar', [OrdenController::class, 'pagar'])->middleware('auth')->name('orden.pagar');
+Route::middleware(['auth'])->group(
+    function () {
+        Route::get('orden', [OrdenController::class, 'index'])->name('orden.index');
+        Route::get('orden/crear', CrearOrden::class)->name('orden.crear');
+        Route::get('orden/{orden}', [OrdenController::class, 'mostrar'])->name('orden.mostrar');
+        //Route::get('orden/{orden}/pagar', [OrdenController::class, 'pagar'])->middleware('auth')->name('orden.pagar');
+        Route::get('orden/{orden}/pagar', PagoOrden::class)->name('orden.pagar');
+        Route::get('orden/{orden}/pago', [OrdenController::class, 'pago'])->name('orden.pago');
+
+        Route::post('webhooks', WebhooksController::class);
+    }
+);
+
+
 
 Route::middleware([
     'auth:sanctum',

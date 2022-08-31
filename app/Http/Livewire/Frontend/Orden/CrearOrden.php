@@ -84,7 +84,7 @@ class CrearOrden extends Component
             $orden->envio = json_encode([
                 'departamento' => Departamento::find($this->departamento_id)->nombre,
                 'ciudad' => Ciudad::find($this->ciudad_id)->nombre,
-                'distrito' => Ciudad::find($this->distrito_id)->nombre,
+                'distrito' => Distrito::find($this->distrito_id)->nombre,
                 'direccion' => $this->direccion,
                 'referencia' => $this->referencia
             ]);
@@ -92,9 +92,9 @@ class CrearOrden extends Component
 
         $orden->save();
 
-        /*foreach (Cart::content() as $itemCarrito) {
-            discount($itemCarrito);
-        }*/
+        foreach (Cart::content() as $itemCarrito) {
+            stockActualizar($itemCarrito);
+        }
 
         Cart::destroy();
 

@@ -1,4 +1,4 @@
-<x-app-layout>
+<div>
     <?php
     // SDK de Mercado Pago
     require base_path('vendor/autoload.php');
@@ -8,11 +8,10 @@
     // Crea un objeto de preferencia
     $preference = new MercadoPago\Preference();
     $shipments = new MercadoPago\Shipments();
-
+    
     $shipments->cost = $orden->costo_envio;
-    $shipments->mode = "not_specified";
+    $shipments->mode = 'not_specified';
     $preference->shipments = $shipments;
-
     
     // Crea un ítem en la preferencia
     foreach ($productosCarrito as $producto) {
@@ -35,18 +34,18 @@
     $preference->save();
     
     /*$item = new MercadoPago\Item();
-        $item->title = 'Mi producto';
-        $item->quantity = 1;
-        $item->unit_price = 75.56;
-        $preference->items = [$item];
-        $preference->save();*/
+                $item->title = 'Mi producto';
+                $item->quantity = 1;
+                $item->unit_price = 75.56;
+                $preference->items = [$item];
+                $preference->save();*/
     
     ?>
 
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-
+        <h2>Hola 2</h2>
         <div class="bg-white rounded-lg shadow-lg px-12 py-8 mb-6 flex items-center">
 
             <div class="relative">
@@ -208,4 +207,4 @@
             }
         });
     </script>
-</x-app-layout>
+</div>

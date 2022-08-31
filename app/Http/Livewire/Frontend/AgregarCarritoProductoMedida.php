@@ -42,6 +42,7 @@ class AgregarCarritoProductoMedida extends Component
         $dataMedida = Medida::find($value);
         $this->colores = $dataMedida->colores;
         $this->opciones['medida'] = $dataMedida->nombre;
+        $this->opciones['medida_id'] = $dataMedida->id;
     }
 
     public function updatedColorId($value)

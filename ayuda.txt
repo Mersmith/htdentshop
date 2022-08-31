@@ -381,4 +381,20 @@ git add .
 git commit -m "Credencias mercadopago del vendedor y comprador."
 git push origin 19_Credenciales_Mercadopago
 ->Click en boton Merge pull request
-*****************************************************************
+***********************31/08/22******************************************
+php artisan make:controller Frontend\WebhooksController
+
+->VerifyCsrfToken
+
+php artisan make:livewire Frontend\Orden\PagoOrden
+php artisan make:policy OrdenPolicy
+php artisan schedule:work
+
+git checkout -b 20_Pagar_Mercadopago
+git branch
+git status
+
+git add .
+git commit -m "Pagar con mercadopago"
+git push origin 20_Pagar_Mercadopago
+->Click en boton Merge pull request

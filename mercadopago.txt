@@ -31,14 +31,24 @@ Usuario Vendedor:
     "description": "a description",
     "date_created": "2022-08-30T23:52:23-04:00",
     "date_last_updated": "2022-08-30T23:52:23-04:00"
+    "email": "test_user_71736478@testuser.com"  
+
 }
 
+Credenciales de prueba
 HTDENTSHOPSTORE
 Public Key
 TEST-c526bf83-b85d-4cbb-b2c1-9c8f3dee3ba2
 
 Access Token
 TEST-8561333830862927-083023-a5468d8cea5c8defe2906e1ee16652a8-1189431842
+
+Credenciales de producción
+Public Key
+APP_USR-4d96bc5e-cae0-42d7-bbd1-8a1462d1910e
+
+Access Token
+APP_USR-8561333830862927-083023-1ec6a1be6d0f23e7f261f1bdf82eac53-1189431842
 
 Usuario Comprador:
 {
@@ -50,5 +60,33 @@ Usuario Comprador:
     "description": "a description",
     "date_created": "2022-08-30T23:50:49-04:00",
     "date_last_updated": "2022-08-30T23:50:49-04:00"
+    "email": "test_user_71817534@testuser.com"  
 }
+***********************31/08/22******************************************
+https://www.mercadopago.com.pe/developers/es/docs/sdks-library/server-side
+PHP 2.4.9	PHP 5.6, 7.1 o superior	
+https://packagist.org/packages/mercadopago/dx-php
 
+composer require mercadopago/dx-php
+-> O tambien puede se así:
+composer require mercadopago/dx-php --ignore-platform-reqs
+
+https://www.mercadopago.com.pe/developers/es/docs/checkout-pro/landing
+https://www.mercadopago.com.pe/developers/es/docs/checkout-pro/requirements
+
+Mastercard	5031 7557 3453 0604	123	11/25
+Visa	4009 1753 3280 6176	123	11/25
+American Express	3711 803032 57522	1234	11/25
+
+APRO	Pago aprobado	123456789
+
+
+Completa estos datos para recibir webhooks
+Modo de prueba:
+http://127.0.0.1:8000/webhooks
+Modo producción:
+http://127.0.0.1:8000/webhooks
+Eventos
+Pagos
+
+https://www.mercadopago.com.pe/developers/es/docs/subscriptions/additional-content/notifications/webhooks
