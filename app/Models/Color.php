@@ -16,6 +16,7 @@ class Color extends Model
         return $this->belongsToMany(Producto::class);
     }
 
+    //Un Color pertenece y tiene muchas medidas
     public function medidas()
     {
         return $this->belongsToMany(Medida::class);
