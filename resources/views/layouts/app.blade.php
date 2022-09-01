@@ -16,10 +16,11 @@
 </head>
 
 <body class="font-sans antialiased">
+    {{--Sirve para crear los flash.banner--}}
     <x-jet-banner />
 
     <div class="min-h-screen bg-gray-100">
-        @livewire('frontend.menu-principal')
+        @livewire('frontend.menu.menu-principal')
 
         <!-- Page Content -->
         <main>

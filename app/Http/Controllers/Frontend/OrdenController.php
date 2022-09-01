@@ -14,8 +14,8 @@ class OrdenController extends Controller
     {
         $ordenes = Orden::query()->where('user_id', auth()->user()->id);
 
-        if (request('status')) {
-            $ordenes->where('estado', request('status'));
+        if (request('estado')) {
+            $ordenes->where('estado', request('estado'));
         }
 
         $ordenes = $ordenes->get();
@@ -31,7 +31,7 @@ class OrdenController extends Controller
 
     public function mostrar(Orden $orden)
     {
-        //$this->authorize('autor', $orden);
+        $this->authorize('autor', $orden);
 
         $envio = json_decode($orden->envio);
         $productosCarrito = json_decode($orden->contenido);
@@ -39,9 +39,12 @@ class OrdenController extends Controller
         return view('frontend.orden.mostrar', compact('orden', 'productosCarrito', 'envio'));
     }
 
-    public function pagar(Orden $orden)
+    /*public function pagar(Orden $orden, Request $request)
     {
-        //$this->authorize('autor', $orden);
+        $this->authorize('autor', $orden);
+
+        $payment_id = $request->get('payment_id');
+
 
         $productosCarrito = json_decode($orden->contenido);
         $envio = json_decode($orden->envio);
@@ -49,15 +52,17 @@ class OrdenController extends Controller
 
         return view('frontend.orden.pagar', compact('orden', 'productosCarrito', 'envio'));
     }
-
+*/
     public function pago(Orden $orden, Request $request)
     {
-        $payment_id = $request->get('payment_id');
-        $reponse = Http::get("https://api.mercadopago.com/v1/payments/$payment_id" . "?access_token=APP_USR-8561333830862927-083023-1ec6a1be6d0f23e7f261f1bdf82eac53-1189431842");
-        $reponse = json_decode($reponse);
+        $this->authorize('autor', $orden);
+
+        $pago_id = $request->get('payment_id');
+        $respuesta = Http::get("https://api.mercadopago.com/v1/payments/$pago_id" . "?access_token=APP_USR-8561333830862927-083023-1ec6a1be6d0f23e7f261f1bdf82eac53-1189431842");
+        $respuesta = json_decode($respuesta);
         //dump($reponse);
-        $status = $reponse->status;
-        if ($status == 'approved') {
+        $estadoPago = $respuesta->status;
+        if ($estadoPago == 'approved') {
             $orden->estado = 2;
             $orden->save();
         }

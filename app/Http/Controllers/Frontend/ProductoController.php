@@ -8,9 +8,8 @@ use App\Models\Producto;
 
 class ProductoController extends Controller
 {
-    //
-    public function show(Producto $producto)
+    public function mostrar(Producto $producto)
     {
-        return view('frontend.productos.show', compact('producto'));
+        return view('frontend.productos.mostrar', compact('producto'));
     }
 }

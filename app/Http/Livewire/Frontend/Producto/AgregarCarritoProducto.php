@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
-
+namespace App\Http\Livewire\Frontend\Producto;
 use Livewire\Component;
-
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,20 +21,19 @@ class AgregarCarritoProducto extends Component
             $this->opciones["cantidad"] = $this->producto->cantidad;
         } else {
             $this->opciones["cantidad"] = $this->producto->stock;
-
         }
     }
 
     public function render()
     {
-        return view('livewire.frontend.agregar-carrito-producto');
+        return view('livewire.frontend.producto.agregar-carrito-producto');
     }
-
 
     public function disminuir()
     {
         $this->cantidadCarrito = $this->cantidadCarrito - 1;
     }
+
     public function aumentar()
     {
         $this->cantidadCarrito = $this->cantidadCarrito + 1;
@@ -58,6 +55,6 @@ class AgregarCarritoProducto extends Component
 
         $this->reset('cantidadCarrito');
 
-        $this->emitTo('frontend.menu-carrrito', 'render');
+        $this->emitTo('frontend.menu.menu-carrrito', 'render');
     }
 }

@@ -1,30 +1,19 @@
 <?php
-
-namespace App\Http\Livewire\Frontend;
-
-use App\Models\Color;
+namespace App\Http\Livewire\Frontend\Carrito;
 use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
-class ActualizarCarritoItemColor extends Component
+class ActualizarCarritoItem extends Component
 {
-
     public $rowId, $cantidadCarrito, $stockProducto, $cantidadProducto;
 
-
+    //mount palabra reservada, al cargar la página.
     public function mount()
     {
         $itemCarrito = Cart::get($this->rowId);
         $this->cantidadCarrito = $itemCarrito->qty;
 
-        $color = Color::where('nombre', $itemCarrito->options->color)->first();
-
-        $this->stockProducto = calculandoProductosDisponibles($itemCarrito->id, $color->id);
-    }
-
-    public function render()
-    {
-        return view('livewire.frontend.actualizar-carrito-item-color');
+        //$this->stockProducto = calculandoProductosDisponibles($itemCarrito->id);
     }
 
     public function disminuir()
@@ -40,8 +29,13 @@ class ActualizarCarritoItemColor extends Component
     {
         $this->cantidadCarrito = $this->cantidadCarrito + 1;
 
-        Cart::update($this->rowId, $this->cantidadCarrito);
+        Cart::update($this->rowId, $this->cantidadCarrito);   
 
         $this->emit('render');
+    }
+    
+    public function render()
+    {
+        return view('livewire.frontend.carrito.actualizar-carrito-item');
     }
 }

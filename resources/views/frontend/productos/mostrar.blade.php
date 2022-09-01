@@ -16,11 +16,11 @@
 
             <div>
                 @if ($producto->subcategoria->medida)
-                    @livewire('frontend.agregar-carrito-producto-medida', ['producto' => $producto])
+                    @livewire('frontend.producto.agregar-carrito-producto-medida', ['producto' => $producto])
                 @elseif($producto->subcategoria->color)
-                    @livewire('frontend.agregar-carrito-producto-color', ['producto' => $producto])
+                    @livewire('frontend.producto.agregar-carrito-producto-color', ['producto' => $producto])
                 @else
-                    @livewire('frontend.agregar-carrito-producto', ['producto' => $producto])
+                    @livewire('frontend.producto.agregar-carrito-producto', ['producto' => $producto])
                 @endif
             </div>
         </div>

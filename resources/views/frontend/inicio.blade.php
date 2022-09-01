@@ -7,7 +7,7 @@
         @foreach ($categorias as $categoria)
             <section>
                 <h1>{{ $categoria->nombre }}</h1>
-                <a href="{{ route('categorias.show', $categoria) }}">Ver más</a>
+                <a href="{{ route('categorias.mostrar', $categoria) }}">Ver más</a>
 
                 @livewire('frontend.categoria.categoria-productos', ['categoria' => $categoria])
 

@@ -21,7 +21,7 @@ class OrdenPolicy
 
     public function pagador(User $user, Orden $orden)
     {
-        if ($orden->estado == 2) {
+        if ($orden->estado == 1) {
             return true;
         } else {
             return false;
