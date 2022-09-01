@@ -1,7 +1,6 @@
 <div class="flex items-center" x-data>
     <p style="margin-right: 5px;">Stock: {{$cantidadProducto}}</p>
-
-
+    
     <x-jet-secondary-button disabled x-bind:disabled="$wire.cantidadCarrito <= 1" wire:loading.attr="disabled"
         wire:target="disminuir" wire:click="disminuir">-
     </x-jet-secondary-button>

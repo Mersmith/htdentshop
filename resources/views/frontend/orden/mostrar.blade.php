@@ -1,51 +1,7 @@
 <x-app-layout>
-    <?php
-    // SDK de Mercado Pago
-    require base_path('vendor/autoload.php');
-    // Agrega credenciales
-    MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
-    
-    // Crea un objeto de preferencia
-    $preference = new MercadoPago\Preference();
-    $shipments = new MercadoPago\Shipments();
-
-    $shipments->cost = $orden->costo_envio;
-    $shipments->mode = "not_specified";
-    $preference->shipments = $shipments;
-
-    
-    // Crea un ítem en la preferencia
-    foreach ($productosCarrito as $producto) {
-        $item = new MercadoPago\Item();
-        $item->title = $producto->name;
-        $item->quantity = $producto->qty;
-        $item->unit_price = $producto->price;
-    
-        $productos[] = $item;
-    }
-    
-    $preference->back_urls = [
-        'success' => route('orden.pago', $orden),
-        'failure' => 'http://www.tu-sitio/failure',
-        'pending' => 'http://www.tu-sitio/pending',
-    ];
-    $preference->auto_return = 'approved';
-    
-    $preference->items = $productos;
-    $preference->save();
-    
-    /*$item = new MercadoPago\Item();
-        $item->title = 'Mi producto';
-        $item->quantity = 1;
-        $item->unit_price = 75.56;
-        $preference->items = [$item];
-        $preference->save();*/
-    
-    ?>
-
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
+        <h2>HOla 3</h2>
 
         <div class="bg-white rounded-lg shadow-lg px-12 py-8 mb-6 flex items-center">
 
@@ -100,7 +56,7 @@
                 Orden-{{ $orden->id }}</p>
 
             @if ($orden->estado == 1)
-                <x-boton-ir-carrito class="ml-auto" href="#">
+                <x-boton-ir-carrito class="ml-auto" href="{{ route('orden.pagar', $orden) }}">
                     Ir a pagar
                 </x-boton-ir-carrito>
             @endif
@@ -145,6 +101,7 @@
                         <th>Total</th>
                     </tr>
                 </thead>
+
                 <tbody class="divide-y divide-gray-200">
                     @foreach ($productosCarrito as $item)
                         <tr>
@@ -184,28 +141,9 @@
                 </tbody>
             </table>
         </div>
-        <div>
-            <p> Subtotal:{{ $orden->total - $orden->costo_envio }} </p>
-            <p> Envio:{{ $orden->costo_envio }} </p>
-            <p> Total:{{ $orden->total }} USD </p>
-            <div class="cho-container"></div>
-        </div>
-    </div>
-    {{-- SDK MercadoPago.js V2 --}}
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script>
-        const mp = new MercadoPago("{{ config('services.mercadopago.key') }}", {
-            locale: 'es-PE'
-        });
 
-        mp.checkout({
-            preference: {
-                id: '{{ $preference->id }}'
-            },
-            render: {
-                container: '.cho-container',
-                label: 'Pagar',
-            }
-        });
-    </script>
+
+
+    </div>
+
 </x-app-layout>

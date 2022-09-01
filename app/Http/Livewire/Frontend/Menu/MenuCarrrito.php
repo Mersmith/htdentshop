@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Menu;
 
 use Livewire\Component;
 
@@ -11,6 +11,6 @@ class MenuCarrrito extends Component
 
     public function render()
     {
-        return view('livewire.frontend.menu-carrrito');
+        return view('livewire.frontend.menu.menu-carrrito');
     }
 }

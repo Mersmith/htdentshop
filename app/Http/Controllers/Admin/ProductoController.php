@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
-    //
     public function files(Producto $producto, Request $request){
 
         $request->validate([

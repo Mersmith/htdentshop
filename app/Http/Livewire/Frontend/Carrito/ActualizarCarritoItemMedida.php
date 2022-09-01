@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Carrito;
 
 use App\Models\Color;
 use App\Models\Medida;
@@ -11,20 +11,21 @@ class ActualizarCarritoItemMedida extends Component
 {
     public $rowId, $cantidadCarrito, $stockProducto, $cantidadProducto;
 
+    //mount palabra reservada, al cargar la página.
     public function mount()
     {
         $itemCarrito = Cart::get($this->rowId);
         $this->cantidadCarrito = $itemCarrito->qty;
 
         $color = Color::where('nombre', $itemCarrito->options->color)->first();
-        $medida = Medida::where('nombre', $itemCarrito->options->size)->first();
+        $medida = Medida::where('nombre', $itemCarrito->options->medida)->first();
 
         $this->stockProducto = calculandoProductosDisponibles($itemCarrito->id, $color->id, $medida->id);
     }
 
     public function render()
     {
-        return view('livewire.frontend.actualizar-carrito-item-medida');
+        return view('livewire.frontend.carrito.actualizar-carrito-item-medida');
     }
 
     public function disminuir()

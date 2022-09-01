@@ -51,6 +51,9 @@
                             <x-jet-dropdown-link href="{{ route('admin.index') }}">
                                 Administrador
                             </x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('orden.index') }}">
+                                Mis ordenes
+                            </x-jet-dropdown-link>
 
                             <div class="border-t border-gray-100"></div>
 
@@ -86,7 +89,7 @@
             <i class="fa-solid fa-heart" style="color: #f49f47;"></i>
 
             {{-- <img class="icono_ecommerce" src="{{ asset('Inicio/imagenes/icono-carrito.svg') }}" alt="" /> --}}
-            @livewire('frontend.menu-carrrito')
+            @livewire('frontend.menu.menu-carrrito')
         </div>
     </nav>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Producto;
 
 use App\Models\Medida;
 use Livewire\Component;
@@ -10,11 +10,8 @@ use Illuminate\Support\Facades\Storage;
 class AgregarCarritoProductoMedida extends Component
 {
     public $producto, $medidas;
-
     public $medida_id = "";
-
     public $colores = [];
-
     public $color_id = "";
     public $cantidadCarrito = 1;
     public $stockProducto = 0;
@@ -34,7 +31,7 @@ class AgregarCarritoProductoMedida extends Component
 
     public function render()
     {
-        return view('livewire.frontend.agregar-carrito-producto-medida');
+        return view('livewire.frontend.producto.agregar-carrito-producto-medida');
     }
 
     public function updatedMedidaId($value)
@@ -42,6 +39,7 @@ class AgregarCarritoProductoMedida extends Component
         $dataMedida = Medida::find($value);
         $this->colores = $dataMedida->colores;
         $this->opciones['medida'] = $dataMedida->nombre;
+        $this->opciones['medida_id'] = $dataMedida->id;
     }
 
     public function updatedColorId($value)
@@ -57,6 +55,7 @@ class AgregarCarritoProductoMedida extends Component
     {
         $this->cantidadCarrito = $this->cantidadCarrito - 1;
     }
+
     public function aumentar()
     {
         $this->cantidadCarrito = $this->cantidadCarrito + 1;
@@ -80,6 +79,6 @@ class AgregarCarritoProductoMedida extends Component
 
         $this->reset('cantidadCarrito');
 
-        $this->emitTo('frontend.menu-carrrito', 'render');
+        $this->emitTo('frontend.menu.menu-carrrito', 'render');
     }
 }

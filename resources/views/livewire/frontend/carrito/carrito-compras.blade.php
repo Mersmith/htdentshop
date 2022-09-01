@@ -66,9 +66,9 @@
                                 <div class="text-sm text-gray-500">
                                     <span>USD {{ $item->price }}</span>
                                     <a class="ml-6 cursor-pointer hover:text-red-600"
-                                        wire:click="delete('{{ $item->rowId }}')"
+                                        wire:click="eliminarProducto('{{ $item->rowId }}')"
                                         wire:loading.class="text-red-600 opacity-25"
-                                        wire:target="delete('{{ $item->rowId }}')">
+                                        wire:target="eliminarProducto('{{ $item->rowId }}')">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </div>
@@ -76,11 +76,11 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-500">
                                     @if ($item->options->medida)
-                                        @livewire('frontend.actualizar-carrito-item-medida', ['rowId' => $item->rowId, 'cantidadProducto' => $item->options->cantidad], key($item->rowId))
+                                        @livewire('frontend.carrito.actualizar-carrito-item-medida', ['rowId' => $item->rowId, 'cantidadProducto' => $item->options->cantidad], key($item->rowId))
                                     @elseif($item->options->color)
-                                        @livewire('frontend.actualizar-carrito-item-color', ['rowId' => $item->rowId, 'cantidadProducto' => $item->options->cantidad], key($item->rowId))
+                                        @livewire('frontend.carrito.actualizar-carrito-item-color', ['rowId' => $item->rowId, 'cantidadProducto' => $item->options->cantidad], key($item->rowId))
                                     @else
-                                        @livewire('frontend.actualizar-carrito-item', ['rowId' => $item->rowId, 'cantidadProducto' => $item->options->cantidad], key($item->rowId))
+                                        @livewire('frontend.carrito.actualizar-carrito-item', ['rowId' => $item->rowId, 'cantidadProducto' => $item->options->cantidad], key($item->rowId))
                                     @endif
                                 </div>
                             </td>
@@ -96,7 +96,7 @@
             </table>
 
             <div class="px-6 py-4">
-                <a class="text-sm cursor-pointer hover:underline mt-3 inline-block" wire:click="destroy">
+                <a class="text-sm cursor-pointer hover:underline mt-3 inline-block" wire:click="eliminarCarritoCompras">
                     <i class="fas fa-trash"></i>
                     Borrar carrito de compras
                 </a>
@@ -127,7 +127,7 @@
                     </div>
 
                     <div>
-                        <x-boton-ir-carrito href="{{route('orden.crear')}}">
+                        <x-boton-ir-carrito href="{{ route('orden.crear') }}">
                             Continuar
                         </x-boton-ir-carrito>
                     </div>

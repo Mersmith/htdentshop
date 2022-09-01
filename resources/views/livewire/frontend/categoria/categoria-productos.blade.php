@@ -1,4 +1,4 @@
-<div wire:init='loadProductos'>
+<div wire:init='cargaProductos'>
 
     @if (count($productos))
         <div class="glider-contain">
@@ -9,7 +9,11 @@
                         <figure>
                             <img src="{{ Storage::url($producto->imagenes->first()->url) }}" alt="">
                         </figure>
-                        <h2>{{ $producto->nombre }} </h2>
+                        <h2>
+                            <a href="{{ route('productos.mostrar', $producto) }}">
+                                {{ $producto->nombre }}
+                            </a>
+                        </h2>
                         <p>{{ $producto->precio }} </p>
                         <p>{{ Str::limit($producto->descripcion, 20) }} </p>
                     </li>
@@ -20,6 +24,8 @@
             <div role="tablist" class="dots"></div>
         </div>
     @else
-        <p>CARGANDO</p>
+        <div class="mb-4 h-48 flex justify-center items-center bg-white shadow-xl border border-gray-100 rounded-lg">
+            <div class="rounded animate-spin ease duration-300 w-10 h-10 border-2 border-indigo-500"></div>
+        </div>
     @endif
 </div>

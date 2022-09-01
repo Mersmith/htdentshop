@@ -10,7 +10,7 @@ class CategoriaProductos extends Component
 
     public $productos = [];
 
-    public function loadProductos()
+    public function cargaProductos()
     {
         $this->productos = $this->categoria->productos()->where('estado', 2)->take(15)->get();
         $this->emit('glider', $this->categoria->id);

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->json('contenido')->nullable();
             $table->string('direccion')->nullable();
             $table->string('referencia')->nullable();
+            $table->json('envio')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
@@ -37,7 +38,7 @@ return new class extends Migration
             $table->foreign('ciudad_id')->references('id')->on('ciudads');
 
             $table->unsignedBigInteger('distrito_id')->nullable();
-            $table->foreign('distrito_id')->references('id')->on('distritos');
+            $table->foreign('distrito_id')->references('id')->on('distritos');            
 
             $table->timestamps();
         });

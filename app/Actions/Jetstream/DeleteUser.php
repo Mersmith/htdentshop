@@ -6,12 +6,7 @@ use Laravel\Jetstream\Contracts\DeletesUsers;
 
 class DeleteUser implements DeletesUsers
 {
-    /**
-     * Delete the given user.
-     *
-     * @param  mixed  $user
-     * @return void
-     */
+    //Eliminar el usuario dado.
     public function delete($user)
     {
         $user->deleteProfilePhoto();

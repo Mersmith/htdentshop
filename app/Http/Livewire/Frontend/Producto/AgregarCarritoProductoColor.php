@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Frontend;
+namespace App\Http\Livewire\Frontend\Producto;
 
 use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -14,7 +14,6 @@ class AgregarCarritoProductoColor extends Component
     public $stockProducto = 0;
 
     public $opciones = ['medida_id' => null, 'cantidad' => null];
-
 
     //mount palabra reserveda, carga al iniciar la página
     public function mount()
@@ -31,12 +30,11 @@ class AgregarCarritoProductoColor extends Component
         $this->stockProducto = calculandoProductosDisponibles($this->producto->id, $color->id);
         $this->opciones["color"] = $color->nombre;
         $this->opciones["cantidad"] = calculandoStockProductos($this->producto->id, $color->id);
-
     }
 
     public function render()
     {
-        return view('livewire.frontend.agregar-carrito-producto-color');
+        return view('livewire.frontend.producto.agregar-carrito-producto-color');
     }
 
     public function disminuir()
@@ -63,6 +61,6 @@ class AgregarCarritoProductoColor extends Component
         $this->stockProducto = calculandoProductosDisponibles($this->producto->id, $this->color_id);
         $this->reset('cantidadCarrito');
 
-        $this->emitTo('frontend.menu-carrrito', 'render');
+        $this->emitTo('frontend.menu.menu-carrrito', 'render');
     }
 }
