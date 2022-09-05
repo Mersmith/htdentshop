@@ -1,9 +1,41 @@
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
-    
+
     <h1 class="text-3xl text-center font-semibold mb-8">Complete esta información para crear un producto</h1>
 
     <div class="grid grid-cols-2 gap-6 mb-4">
 
+        {{-- Estado --}}
+        <div>
+            <p>Estado</p>
+            <div class="ml-auto">
+                <label>
+                    <input type="radio" value="1" name="estado" wire:model.defer="estado">
+                    Borrado
+                </label>
+
+                <label class="ml-2">
+                    <input type="radio" value="2" name="estado" wire:model.defer="estado">
+                    Publicado
+                </label>
+            </div>
+            <x-jet-input-error for="estado" />
+
+        </div>
+        {{-- Imagenes --}}
+        <div>
+            @if ($imagenes)
+                Photo Preview:
+                @foreach ($imagenes as $imagen)
+                    <img src="{{ $imagen->temporaryUrl() }}">
+                @endforeach
+            @endif
+            <input type="file" wire:model="imagenes" multiple>
+
+            @error('imagenes.*')
+                <span class="error">{{ $message }}</span>
+            @enderror
+
+        </div>
         {{-- Categoría --}}
         <div>
             <x-jet-label value="Categorías" />
@@ -11,7 +43,7 @@
                 <option value="" selected disabled>Seleccione una categoría</option>
 
                 @foreach ($categorias as $categoria)
-                    <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                    <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                 @endforeach
             </select>
 
@@ -25,7 +57,7 @@
                 <option value="" selected disabled>Seleccione una subcategoría</option>
 
                 @foreach ($subcategorias as $subcategoria)
-                    <option value="{{$subcategoria->id}}">{{$subcategoria->nombre}}</option>
+                    <option value="{{ $subcategoria->id }}">{{ $subcategoria->nombre }}</option>
                 @endforeach
             </select>
 
@@ -36,41 +68,32 @@
     {{-- Nombre --}}
     <div class="mb-4">
         <x-jet-label value="Nombre" />
-        <x-jet-input type="text" 
-                    class="w-full"
-                    wire:model="nombre"
-                    placeholder="Ingrese el nombre del producto" />
+        <x-jet-input type="text" class="w-full" wire:model="nombre" placeholder="Ingrese el nombre del producto" />
         <x-jet-input-error for="nombre" />
     </div>
 
     {{-- Slug --}}
     <div class="mb-4">
         <x-jet-label value="Slug" />
-        <x-jet-input type="text"
-            disabled
-            wire:model="ruta"
-            class="w-full bg-gray-200" 
+        <x-jet-input type="text" disabled wire:model="ruta" class="w-full bg-gray-200"
             placeholder="Ingrese el slug del producto" />
 
-    <x-jet-input-error for="ruta" />
+        <x-jet-input-error for="ruta" />
     </div>
 
     {{-- Descrición --}}
     <div class="mb-4">
         <div wire:ignore>
             <x-jet-label value="Descripción" />
-            <textarea class="w-full form-control" rows="4"
-                wire:model="descripcion"
-                x-data 
-                x-init="ClassicEditor.create($refs.miEditor)
-                .then(function(editor){
+            <textarea class="w-full form-control" rows="4" wire:model="descripcion" x-data x-init="ClassicEditor.create($refs.miEditor)
+                .then(function(editor) {
                     editor.model.document.on('change:data', () => {
                         @this.set('descripcion', editor.getData())
                     })
                 })
-                .catch( error => {
-                    console.error( error );
-                } );"
+                .catch(error => {
+                    console.error(error);
+                });"
                 x-ref="miEditor">
             </textarea>
         </div>
@@ -84,7 +107,7 @@
             <select class="form-control w-full" wire:model="marca_id">
                 <option value="" selected disabled>Seleccione una marca</option>
                 @foreach ($marcas as $marca)
-                    <option value="{{$marca->id}}">{{$marca->nombre}}</option>
+                    <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
                 @endforeach
             </select>
 
@@ -94,38 +117,32 @@
         {{-- Precio --}}
         <div>
             <x-jet-label value="Precio" />
-            <x-jet-input 
-                wire:model="precio"
-                type="number" 
-                class="w-full" 
-                step=".01" />
+            <x-jet-input wire:model="precio" type="number" class="w-full" step=".01" />
             <x-jet-input-error for="precio" />
         </div>
     </div>
 
     @if ($subcategoria_id)
-        
-        @if (!$this->subcategoria->color && !$this->subcategoria->medida)
-            
+        @if ($this->subcategoria->color && !$this->subcategoria->medida)
+            <p>El producto varia en Color</p>
+        @elseif(!$this->subcategoria->color && $this->subcategoria->medida)
+            <p>El producto varia en Medida</p>
+        @elseif($this->subcategoria->color && $this->subcategoria->medida)
+            <p>El producto varia en Color y Medida</p>
+        @else
+            <p>El producto no tiene variación</p>
             <div>
                 <x-jet-label value="Cantidad" />
-                <x-jet-input 
-                    wire:model="cantidad"
-                    type="number" 
-                    class="w-full" />
+                <x-jet-input wire:model="cantidad" type="number" class="w-full" />
                 <x-jet-input-error for="cantidad" />
             </div>
-
         @endif
-
     @endif
 
 
+
     <div class="flex mt-4">
-        <x-jet-button
-            wire:loading.attr="disabled"
-            wire:target="save"
-            wire:click="save"
+        <x-jet-button wire:loading.attr="disabled" wire:target="crearProducto" wire:click="crearProducto"
             class="ml-auto">
             Crear producto
         </x-jet-button>

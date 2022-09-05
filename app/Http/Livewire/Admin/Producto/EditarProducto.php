@@ -16,8 +16,6 @@ use Illuminate\Support\Str;
 
 class EditarProducto extends Component
 {
-
-
     public $producto, $categorias, $subcategorias, $marcas, $ruta;
 
     public $categoria_id;
