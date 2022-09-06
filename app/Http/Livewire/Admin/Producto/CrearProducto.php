@@ -9,15 +9,17 @@ use App\Models\Producto;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Livewire\Component;
 use Illuminate\Support\Str;
-
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class CrearProducto extends Component
 {
+    use WithFileUploads;
 
-    public $categorias, $subcategorias = [], $marcas = [];
+    public $categorias, $subcategorias = [], $marcas = [], $imagenes = [];
 
     public $categoria_id = "",  $subcategoria_id = "", $marca_id;
-    public $nombre, $ruta, $descripcion, $precio, $cantidad;
+    public $nombre, $ruta, $descripcion, $precio, $cantidad, $estado;
 
     protected $rules = [
         'categoria_id' => 'required',
@@ -27,6 +29,7 @@ class CrearProducto extends Component
         'ruta' => 'required|unique:productos',
         'descripcion' => 'required',
         'precio' => 'required',
+        'estado' => 'required',
     ];
 
 
@@ -46,7 +49,8 @@ class CrearProducto extends Component
         $this->ruta = Str::slug($value);
     }
 
-    public function getSubcategoriaProperty(){
+    public function getSubcategoriaProperty()
+    {
         return Subcategoria::find($this->subcategoria_id);
     }
 
@@ -55,7 +59,8 @@ class CrearProducto extends Component
         $this->categorias = Categoria::all();
     }
 
-    public function save(){
+    public function crearProducto()
+    {
 
         $rules = $this->rules;
 
@@ -75,6 +80,7 @@ class CrearProducto extends Component
         $producto->precio = $this->precio;
         $producto->subcategoria_id  = $this->subcategoria_id;
         $producto->marca_id  = $this->marca_id;
+        $producto->estado  = $this->estado;
         if ($this->subcategoria_id) {
             if (!$this->subcategoria->color && !$this->subcategoria->medida) {
                 $producto->cantidad = $this->cantidad;
@@ -82,6 +88,19 @@ class CrearProducto extends Component
         }
 
         $producto->save();
+
+        $this->validate([
+            'imagenes.*' => 'image|max:1024', // 1MB Max
+        ]);
+
+        foreach ($this->imagenes as $imagen) {
+            //$photo->store('photos');
+            $urlImagen = Storage::put('productos', $imagen);
+
+            $producto->imagenes()->create([
+                'url' => $urlImagen
+            ]);
+        }
 
         return redirect()->route('admin.productos.editar', $producto);
     }

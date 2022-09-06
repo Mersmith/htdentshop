@@ -7,7 +7,7 @@ use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Storage;
 
-class AgregarCarritoProductoMedida extends Component
+class AgregarCarritoSoloProductoMedida extends Component
 {
     public $producto, $medidas;
     public $medida_id = "";
@@ -31,27 +31,20 @@ class AgregarCarritoProductoMedida extends Component
 
     public function render()
     {
-        return view('livewire.frontend.producto.agregar-carrito-producto-medida');
+        return view('livewire.frontend.producto.agregar-carrito-solo-producto-medida');
     }
-
     public function updatedMedidaId($value)
     {
         $dataMedida = Medida::find($value);
         $this->colores = $dataMedida->colores;
         $this->opciones['medida'] = $dataMedida->nombre;
         $this->opciones['medida_id'] = $dataMedida->id;
-        $this->reset('color_id');
-    }
-
-    public function updatedColorId($value)
-    {
         $dataMedida = Medida::find($this->medida_id);
-        $color = $dataMedida->colores->find($value);
-        //$this->stockProducto = $color->pivot->cantidad;
+        $color = $dataMedida->colores->find(5);
         $this->stockProducto = calculandoProductosDisponibles($this->producto->id, $color->id, $dataMedida->id);
         $this->opciones['color'] = $color->nombre;
     }
-
+ 
     public function disminuir()
     {
         $this->cantidadCarrito = $this->cantidadCarrito - 1;
@@ -76,7 +69,7 @@ class AgregarCarritoProductoMedida extends Component
         );
 
 
-        $this->stockProducto = calculandoProductosDisponibles($this->producto->id, $this->color_id, $this->medida_id);
+        //$this->stockProducto = calculandoProductosDisponibles($this->producto->id, $this->color_id, $this->medida_id);
 
         $this->reset('cantidadCarrito');
 

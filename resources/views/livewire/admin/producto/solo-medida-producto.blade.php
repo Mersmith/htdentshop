@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                @livewire('admin.producto.color-medida', ['medida' => $medida], key('color-medida-' . $medida->id))
+                @livewire('admin.producto.solo-color-medida', ['medida' => $medida], key('color-medida-' . $medida->id))
             </li>
         @endforeach
     </ul>
@@ -46,7 +46,7 @@
 
     <x-jet-dialog-modal wire:model="abierto">
         <x-slot name="title">
-            Editar Medida
+            Editar medida
         </x-slot>
 
         <x-slot name="content">

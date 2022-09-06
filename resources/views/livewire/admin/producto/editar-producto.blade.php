@@ -1,5 +1,5 @@
 <div>
- 
+
 
     <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -31,7 +31,6 @@
 
                 <ul class="flex flex-wrap">
                     @foreach ($producto->imagenes as $imagen)
-
                         <li class="relative" wire:key="image-{{ $imagen->id }}">
                             <img class="w-32 h-20 object-cover" src="{{ Storage::url($imagen->url) }}" alt="">
                             <x-jet-danger-button class="absolute right-2 top-2"
@@ -40,7 +39,6 @@
                                 x
                             </x-jet-danger-button>
                         </li>
-
                     @endforeach
 
                 </ul>
@@ -109,14 +107,15 @@
                 <div wire:ignore>
                     <x-jet-label value="Descripción" />
                     <textarea class="w-full form-control" rows="4" wire:model="producto.descripcion" x-data x-init="ClassicEditor.create($refs.miEditor)
-                        .then(function(editor){
+                        .then(function(editor) {
                             editor.model.document.on('change:data', () => {
                                 @this.set('producto.descripcion', editor.getData())
                             })
                         })
-                        .catch( error => {
-                            console.error( error );
-                        } );" x-ref="miEditor">
+                        .catch(error => {
+                            console.error(error);
+                        });"
+                        x-ref="miEditor">
                     </textarea>
                 </div>
                 <x-jet-input-error for="producto.descripcion" />
@@ -149,13 +148,11 @@
 
 
                 @if (!$this->subcategoria->color && !$this->subcategoria->medida)
-
                     <div>
                         <x-jet-label value="Cantidad" />
                         <x-jet-input wire:model="producto.cantidad" type="number" class="w-full" />
                         <x-jet-input-error for="producto.cantidad" />
                     </div>
-
                 @endif
 
             @endif
@@ -175,14 +172,15 @@
 
         @if ($this->subcategoria)
 
-            @if ($this->subcategoria->medida)
-
+            @if ($this->subcategoria->medida && !$this->subcategoria->color)
+                <h2>Producto Varia en Medida</h2>
+                @livewire('admin.producto.solo-medida-producto', ['producto' => $producto], key('medida-producto-' . $producto->id))
+            @elseif ($this->subcategoria->color && $this->subcategoria->medida)
+                <h2>Producto Varia en Medida y Color</h2>
                 @livewire('admin.producto.medida-producto', ['producto' => $producto], key('medida-producto-' . $producto->id))
-
-            @elseif($this->subcategoria->color)
-
+            @elseif($this->subcategoria->color && !$this->subcategoria->medida)
+                <h2>Producto Varia en Color</h2>
                 @livewire('admin.producto.color-producto', ['producto' => $producto], key('color-producto-' . $producto->id))
-
             @endif
 
         @endif

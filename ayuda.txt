@@ -411,3 +411,17 @@ git add .
 git commit -m "Refactorice el codigo y organice"
 git push origin 21_Refactorizacion1
 ->Click en boton Merge pull request
+***********************05/09/22******************************************
+
+php artisan make:livewire Admin\Producto\solo-medida-producto
+php artisan make:livewire Admin\Producto\solo-color-medida-producto
+php artisan make:livewire Frontend\Producto\agregar-carrito-solo-producto-medida
+
+git checkout -b 22_Subir_Imagenes_Medida
+git branch
+git status
+
+git add .
+git commit -m "Subir Imagenes al producto y variacion del producto en medidad"
+git push origin 22_Subir_Imagenes_Medida
+->Click en boton Merge pull request
