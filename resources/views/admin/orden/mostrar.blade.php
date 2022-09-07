@@ -1,3 +1,3 @@
 <x-admin-layout>
-    Mostrar Ordenes
+    @livewire('admin.orden.estado-orden', ['orden' => $orden])
 </x-admin-layout>

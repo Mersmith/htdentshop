@@ -17,7 +17,7 @@ class CrearCategoria extends Component
     public $marcas, $categorias, $categoria, $aleatorio, $editarImagen;
 
     //Los detectores de eventos
-    protected $listeners = ['eliminarCategoria'];
+    //protected $listeners = ['eliminarCategoria'];
 
     public $crearFormulario = [
 

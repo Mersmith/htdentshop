@@ -8,8 +8,10 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Livewire\Frontend\Orden\CrearOrden;
 use App\Http\Livewire\Frontend\Carrito\CarritoCompras;
 use App\Http\Controllers\Frontend\OrdenController;
+use App\Http\Controllers\Frontend\ResenaController;
 use App\Http\Controllers\Frontend\WebhooksController;
 use App\Http\Livewire\Frontend\Orden\PagoOrden;
+use App\Models\Orden;
 
 Route::get('/', InicioController::class)->name('inicio');
 
@@ -18,7 +20,7 @@ Route::get('categorias/{categoria}', [CategoriaController::class, 'mostrar'])->n
 Route::get('productos/{producto}', [ProductoController::class, 'mostrar'])->name('productos.mostrar');
 
 //Eliminar el carrito
-Route::get('prueba', function () {
+Route::get('borrar', function () {
     Cart::destroy();
 });
 
@@ -35,6 +37,20 @@ Route::middleware(['auth'])->group(
         Route::post('webhooks', WebhooksController::class);
     }
 );
+
+//Eliminar el carrito
+Route::get('prueba', function () {
+    $orders = Orden::where('user_id', 1)->select('contenido')->get()->map(function($order){
+        return json_decode($order->contenido, true);
+    });
+
+    $products = $orders->collapse();
+
+    //return $products->contains('id', 19);
+    dd($products->contains('id', 19));
+});
+
+Route::post('resenas/{producto}', [ResenaController::class, 'store'])->name('resenas.store');
 
 Route::middleware([
     'auth:sanctum',

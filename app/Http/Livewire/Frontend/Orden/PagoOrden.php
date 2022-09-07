@@ -14,7 +14,6 @@ class PagoOrden extends Component
 
     protected $listeners = ['pagarOrden'];
 
-
     public function mount(Orden $orden){
         $this->orden = $orden;
     }

@@ -17,10 +17,11 @@
         <x-slot name="content">
             <ul>
                 @forelse (Cart::content() as $item)
-                    <li>
-                        <img class="h-15 x-20 object-cover mr-4" src="{{ $item->options->imagen }}" alt="">
+                    <li style="margin-bottom: 5px;">
+                        <img class="object-cover mr-4" style="width: 50px;" src="{{ $item->options->imagen }}" alt="">
                         <article>
                             <h1>{{ $item->name }}</h1>
+                            <h1>{{ $item->rowId }}</h1>
                             <p>Cant: {{ $item->qty }} </p>
                             <p>USD {{ $item->price }} </p>
                             @isset($item->options['color'])
@@ -30,6 +31,7 @@
                                 <p>Medida: {{ $item->options['medida'] }} </p>
                             @endisset
                         </article>
+                        <br>
                     </li>
                 @empty
                     <div>
