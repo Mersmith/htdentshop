@@ -76,11 +76,6 @@ class CrearOrden extends Component
 
         if ($this->tipo_envio == 2) {
             $orden->costo_envio = $this->costo_envio;
-            /* $orden->departamento_id = $this->departamento_id;
-            $orden->ciudad_id = $this->ciudad_id;
-            $orden->distrito_id = $this->distrito_id;
-            $orden->direccion = $this->direccion;
-            $orden->referencia = $this->referencia; */
             $orden->envio = json_encode([
                 'departamento' => Departamento::find($this->departamento_id)->nombre,
                 'ciudad' => Ciudad::find($this->ciudad_id)->nombre,
@@ -92,9 +87,10 @@ class CrearOrden extends Component
 
         $orden->save();
 
-        foreach (Cart::content() as $itemCarrito) {
+        //Actualizar en descontar el Stock
+        /*foreach (Cart::content() as $itemCarrito) {
             stockActualizar($itemCarrito);
-        }
+        }*/
 
         Cart::destroy();
 

@@ -41,6 +41,7 @@ class AgregarCarritoProductoMedida extends Component
         $this->opciones['medida'] = $dataMedida->nombre;
         $this->opciones['medida_id'] = $dataMedida->id;
         $this->reset('color_id');
+        //dump($dataMedida->id);
     }
 
     public function updatedColorId($value)
@@ -75,6 +76,7 @@ class AgregarCarritoProductoMedida extends Component
             ]
         );
 
+        //dump($this->opciones['medida_id']);
 
         $this->stockProducto = calculandoProductosDisponibles($this->producto->id, $this->color_id, $this->medida_id);
 

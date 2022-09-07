@@ -11,6 +11,7 @@ class OrdenController extends Controller
     public function index()
     {
 
+        //Filtro todos los estados diferente a 1
         $ordenes = Orden::query()->where('estado', '<>', 1);
 
         if (request('estado')) {

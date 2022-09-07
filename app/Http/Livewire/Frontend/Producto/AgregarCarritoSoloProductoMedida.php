@@ -2,13 +2,15 @@
 
 namespace App\Http\Livewire\Frontend\Producto;
 
-use App\Models\Medida;
 use Livewire\Component;
+use App\Models\Medida;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Storage;
 
 class AgregarCarritoSoloProductoMedida extends Component
 {
+    protected $listeners = ['agregarProducto'];
+
     public $producto, $medidas;
     public $medida_id = "";
     public $colores = [];
@@ -33,18 +35,7 @@ class AgregarCarritoSoloProductoMedida extends Component
     {
         return view('livewire.frontend.producto.agregar-carrito-solo-producto-medida');
     }
-    public function updatedMedidaId($value)
-    {
-        $dataMedida = Medida::find($value);
-        $this->colores = $dataMedida->colores;
-        $this->opciones['medida'] = $dataMedida->nombre;
-        $this->opciones['medida_id'] = $dataMedida->id;
-        $dataMedida = Medida::find($this->medida_id);
-        $color = $dataMedida->colores->find(5);
-        $this->stockProducto = calculandoProductosDisponibles($this->producto->id, $color->id, $dataMedida->id);
-        $this->opciones['color'] = $color->nombre;
-    }
- 
+  
     public function disminuir()
     {
         $this->cantidadCarrito = $this->cantidadCarrito - 1;
@@ -55,21 +46,28 @@ class AgregarCarritoSoloProductoMedida extends Component
         $this->cantidadCarrito = $this->cantidadCarrito + 1;
     }
 
-    public function agregarProducto()
+    public function agregarProducto($value, $value2)
     {
+        //dump($value, $value2);
+        $dataMedida = Medida::find($value);
+        $this->colores = $dataMedida->colores;
+        $this->opciones['medida'] = $dataMedida->nombre;
+        $this->opciones['medida_id'] = $dataMedida->id;
+
+        $color = $dataMedida->colores->find(5);
+        $this->stockProducto = calculandoProductosDisponibles($this->producto->id, $color->id, $dataMedida->id);
+        $this->opciones['color'] = $color->nombre;
+
         Cart::add(
             [
                 'id' => $this->producto->id,
                 'name' => $this->producto->nombre,
-                'qty' => $this->cantidadCarrito,
+                'qty' => $value2,
                 'price' => $this->producto->precio,
                 'weight' => 550,
                 'options' => $this->opciones,
             ]
         );
-
-
-        //$this->stockProducto = calculandoProductosDisponibles($this->producto->id, $this->color_id, $this->medida_id);
 
         $this->reset('cantidadCarrito');
 

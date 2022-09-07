@@ -6,8 +6,10 @@ use App\Http\Livewire\Admin\Producto\EditarProducto;
 use App\Http\Livewire\Admin\Producto\CrearProducto;
 use App\Http\Controllers\Admin\ProductoController;
 use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\OrdenController;
 use App\Http\Livewire\Admin\Categoria\MostrarCategoria;
 use App\Http\Livewire\Admin\Marca\MostrarMarca;
+use App\Http\Livewire\Admin\Usuario\UsuarioComponente;
 
 Route::get('/', MostrarProductos::class)->name('admin.index');
 
@@ -20,3 +22,8 @@ Route::get('categorias', [CategoriaController::class, 'index'])->name('admin.cat
 Route::get('categorias/{categoria}', MostrarCategoria::class)->name('admin.categorias.mostrar');
 
 Route::get('marcas', MostrarMarca::class)->name('admin.marcas.index');
+
+Route::get('usuarios', UsuarioComponente::class)->name('admin.usuarios.index');
+
+Route::get('ordenes', [OrdenController::class, 'index'])->name('admin.ordenes.index');
+Route::get('ordenes/{orden}', [OrdenController::class, 'mostrar'])->name('admin.ordenes.mostrar');

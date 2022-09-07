@@ -37,6 +37,10 @@ class Producto extends Model
         return $this->hasMany(Medida::class);
     }
 
+    public function resenas(){
+        return $this->hasMany(Resena::class);
+    }
+
     //Relación uno a muchos inversa
     public function marca()
     {

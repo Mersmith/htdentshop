@@ -11,7 +11,7 @@ class MostrarCategoria extends Component
 {
     public $categoria, $subcategorias, $subcategoria;
 
-    protected $listeners = ['eliminarSubcategoria'];
+    //protected $listeners = ['eliminarSubcategoria'];
 
     protected $rules = [
         'crearFormulario.nombre' => 'required',

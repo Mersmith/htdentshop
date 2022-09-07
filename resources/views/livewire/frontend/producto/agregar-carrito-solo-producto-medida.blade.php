@@ -1,7 +1,6 @@
 <div x-data>
     <p>PRODUCTO solO MEDIDA</p>
 
-
     <table class="text-gray-600">
         <thead class="border-b border-gray-300">
             <tr class="text-left">
@@ -13,7 +12,7 @@
 
         <tbody class="divide-y divide-gray-300">
             @foreach ($medidas as $itemMedida)
-                <tr>
+                <tr x-data="aumentarCantidad(), cantidad">
                     <td class="py-2">
                         <a class="uppercase">
                             {{ $itemMedida->nombre }}
@@ -22,15 +21,15 @@
                     </td>
 
                     <td class="py-2">
-                        <x-jet-secondary-button>-
-                        </x-jet-secondary-button>
-                        <span>{{ $cantidadCarrito }} </span>
-                        <x-jet-secondary-button>+
-                        </x-jet-secondary-button>
+                        <div>
+                            <button x-on:click="disminuir()">-</button>
+                            <span x-text="cantidad"></span>
+                            <button x-on:click="incrementar()">+</button>
+                        </div>
                     </td>
+
                     <td class="py-2">
-                        <x-boton-agregar wire:click="agregarProducto" wire:loading.attr="disabled"
-                            wire:target="agregarProducto" color="orange">
+                        <x-boton-agregar x-on:click="$wire.agregarProducto({{ $itemMedida->id }}, cantidad)">
                             Agregar al carrito
                         </x-boton-agregar>
                     </td>
@@ -38,38 +37,21 @@
             @endforeach
         </tbody>
     </table>
-
-    {{-- <div>
-        <p>Talla: </p>
-        <select wire:model="medida_id">
-            <option value="" selected disabled>Seleccione medida</option>
-            @foreach ($medidas as $itemMedida)
-                <option value="{{ $itemMedida->id }}">{{ $itemMedida->nombre }}</option>
-            @endforeach
-        </select>
-    </div>
-
-    <div>
-        <p>Stock disponible:
-            @if ($stockProducto)
-                {{ $stockProducto }}
-            @else
-                {{ $producto->stock }}
-            @endif
-        </p>
-        <x-jet-secondary-button disabled x-bind:disabled="$wire.cantidadCarrito <= 1" wire:loading.attr="disabled"
-            wire:target="disminuir" wire:click="disminuir">-
-        </x-jet-secondary-button>
-        <span>{{ $cantidadCarrito }} </span>
-        <x-jet-secondary-button x-bind:disabled="$wire.cantidadCarrito >= $wire.stockProducto"
-            wire:loading.attr="disabled" wire:target="aumentar" wire:click="aumentar">+
-        </x-jet-secondary-button>
-    </div>
-    <div>
-        <x-boton-agregar x-bind:disabled="$wire.cantidadCarrito > $wire.stockProducto"
-            x-bind:disabled="!$wire.stockProducto" wire:click="agregarProducto" wire:loading.attr="disabled"
-            wire:target="agregarProducto" color="orange">
-            Agregar al carrito
-        </x-boton-agregar>
-    </div> --}}
 </div>
+
+<script>
+    var cantidad = 1;
+
+    function aumentarCantidad() {
+        return {
+            cantidad: cantidad,
+
+            disminuir() {
+                this.cantidad--;
+            },
+            incrementar() {
+                this.cantidad++;
+            }
+        };
+    }
+</script>

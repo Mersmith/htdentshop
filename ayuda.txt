@@ -425,3 +425,35 @@ git add .
 git commit -m "Subir Imagenes al producto y variacion del producto en medidad"
 git push origin 22_Subir_Imagenes_Medida
 ->Click en boton Merge pull request
+
+***********************07/09/22******************************************
+
+https://spatie.be/docs/laravel-permission/v5/introduction
+composer require spatie/laravel-permission
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+php artisan config:clear
+php artisan migrate
+php artisan migrate:fresh --seed
+
+php artisan make:livewire Admin\Usuario\usuario-componente
+
+https://ckeditor.com/ckeditor-5/download/
+<script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+
+php artisan make:policy ProductoPolicy
+php artisan make:model Resena -m
+php artisan migrate
+php artisan make:controller Frontend\ResenaController
+
+php artisan make:livewire Admin\Orden\estado-orden
+
+git checkout -b 23_Permisos_Ordenes
+git branch
+git status
+
+git add .
+git commit -m "Permisos, Resenas, Ordenes"
+git push origin 23_Permisos_Ordenes
+->Click en boton Merge pull request
+
+
