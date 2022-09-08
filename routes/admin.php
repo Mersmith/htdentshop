@@ -8,6 +8,9 @@ use App\Http\Controllers\Admin\ProductoController;
 use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\OrdenController;
 use App\Http\Livewire\Admin\Categoria\MostrarCategoria;
+use App\Http\Livewire\Admin\Departamento\CiudadComponente;
+use App\Http\Livewire\Admin\Departamento\DepartamentoComponente;
+use App\Http\Livewire\Admin\Departamento\MostrarDepartamento;
 use App\Http\Livewire\Admin\Marca\MostrarMarca;
 use App\Http\Livewire\Admin\Usuario\UsuarioComponente;
 
@@ -27,3 +30,7 @@ Route::get('usuarios', UsuarioComponente::class)->name('admin.usuarios.index');
 
 Route::get('ordenes', [OrdenController::class, 'index'])->name('admin.ordenes.index');
 Route::get('ordenes/{orden}', [OrdenController::class, 'mostrar'])->name('admin.ordenes.mostrar');
+
+Route::get('departamentos', DepartamentoComponente::class)->name('admin.departamentos.index');
+Route::get('departamentos/{departamento}', MostrarDepartamento::class)->name('admin.departamentos.mostrar');
+Route::get('ciudades/{ciudad}', CiudadComponente::class)->name('admin.ciudades.mostrar');

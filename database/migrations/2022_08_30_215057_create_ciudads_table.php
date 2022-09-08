@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float('costo');
 
             $table->unsignedBigInteger('departamento_id');
+            //Cada vez que eliminamos un Departamento, se elimine tambien las Ciudades asosiados a este Departamento.
             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
 
             $table->timestamps();
