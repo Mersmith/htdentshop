@@ -24,11 +24,18 @@
                     <x-jet-nav-link href="{{ route('admin.usuarios.index') }}" :active="request()->routeIs('admin.usuarios.index')">
                         Usuarios
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('admin.ordenes.index') }}" :active="request()->routeIs('admin.ordenes..*')">
-                        Ordenes
-                    </x-jet-nav-link>
+
+                    @can('admin.ordenes.index')
+                        <x-jet-nav-link href="{{ route('admin.ordenes.index') }}" :active="request()->routeIs('admin.ordenes..*')">
+                            Ordenes
+                        </x-jet-nav-link>
+                    @endcan
+
                     <x-jet-nav-link href="{{ route('admin.departamentos.index') }}" :active="request()->routeIs('admin.departamentos.index')">
                         Departamentos
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('admin.roles.index') }}" :active="request()->routeIs('admin.roles')">
+                        Roles
                     </x-jet-nav-link>
                 </div>
             </div>

@@ -12,6 +12,10 @@ use App\Http\Controllers\Frontend\ResenaController;
 use App\Http\Controllers\Frontend\WebhooksController;
 use App\Http\Livewire\Frontend\Orden\PagoOrden;
 use App\Models\Orden;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+//use Illuminate\Support\Facades\Auth;
+//Auth::routes();
+//Auth::routes(['verify' => true]);
 
 Route::get('/', InicioController::class)->name('inicio');
 
@@ -40,7 +44,7 @@ Route::middleware(['auth'])->group(
 
 //Eliminar el carrito
 Route::get('prueba', function () {
-    $orders = Orden::where('user_id', 1)->select('contenido')->get()->map(function($order){
+    $orders = Orden::where('user_id', 1)->select('contenido')->get()->map(function ($order) {
         return json_decode($order->contenido, true);
     });
 
@@ -61,3 +65,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/user/profile');
+})->middleware(['auth', 'signed'])->name('verification.verify');

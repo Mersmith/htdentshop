@@ -39,6 +39,10 @@
                             <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Editar</span>
                             </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Eliminar
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -91,6 +95,19 @@
                                             wire:change="asignarRol({{ $usuario->id }}, $event.target.value)">
                                         No
                                     </label>
+                                    |
+                                    <a href="{{ route('admin.usuarios.editar', $usuario) }}">Editar</a>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="{{ route('admin.usuarios.show', $usuario->id) }}"
+                                        class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Roles</a>
+                                    <form class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md"
+                                        method="POST" action="{{ route('admin.usuarios.destroy', $usuario->id) }}"
+                                        onsubmit="return confirm('Are you sure?');">
+                                        @csrf
+                                        <button type="submit">Delete</button>
+                                    </form>
+
                                 </td>
                             </tr>
                         @endforeach

@@ -16,8 +16,8 @@ return new class extends Migration
     {
         Schema::create('ordens', function (Blueprint $table) {
             $table->id();
-           
-            $table->enum('estado', [Orden::PENDIENTE,Orden::RECIBIDO, Orden::ENVIADO, Orden::ENTREGADO, Orden::ANULADO])->default(Orden::PENDIENTE);
+
+            $table->enum('estado', [Orden::PENDIENTE, Orden::RECIBIDO, Orden::ENVIADO, Orden::ENTREGADO, Orden::ANULADO])->default(Orden::PENDIENTE);
             $table->string('contacto');
             $table->string('celular');
             $table->enum('tipo_envio', [1, 2]);
@@ -25,12 +25,12 @@ return new class extends Migration
             $table->float('total');
             $table->json('contenido')->nullable();
             $table->json('envio')->nullable();
-            /*
-            $table->string('referencia')->nullable();
-            $table->string('direccion')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            
+            /* $table->string('referencia')->nullable();
+            $table->string('direccion')->nullable();
 
             $table->unsignedBigInteger('departamento_id')->nullable();
             $table->foreign('departamento_id')->references('id')->on('departamentos');
@@ -39,7 +39,7 @@ return new class extends Migration
             $table->foreign('ciudad_id')->references('id')->on('ciudads');
 
             $table->unsignedBigInteger('distrito_id')->nullable();
-            $table->foreign('distrito_id')->references('id')->on('distritos'); */           
+            $table->foreign('distrito_id')->references('id')->on('distritos'); */
 
             $table->timestamps();
         });

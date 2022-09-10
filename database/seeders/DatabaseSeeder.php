@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('subcategorias');
         Storage::makeDirectory('productos');
 
+        $this->call(RolSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(CategoriaSeeder::class);
         $this->call(SubcategoriaSeeder::class);
@@ -40,5 +41,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SliderSeeder::class);
 
         $this->call(DepartamentoSeeder::class);
+
     }
 }
