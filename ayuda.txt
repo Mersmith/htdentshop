@@ -456,4 +456,36 @@ git commit -m "Permisos, Resenas, Ordenes"
 git push origin 23_Permisos_Ordenes
 ->Click en boton Merge pull request
 
+***********************08/09/22******************************************
 
+php artisan make:livewire Admin\Departamento\departamento-componente
+php artisan make:livewire Admin\Departamento\ciudad-componente
+php artisan make:livewire Admin\Departamento\mostrar-departamento
+php artisan make:livewire Admin\Departamento\distrito-ciudad
+
+php artisan make:livewire Usuario\Perfil\mostrar-perfil
+
+git checkout -b 24_Crud_Envio
+git branch
+git status
+
+git add .
+git commit -m "Crud de envios, departamento, ciudad, distrito"
+git push origin 24_Crud_Envio
+->Click en boton Merge pull request
+
+***********************10/09/22******************************************
+php artisan make:seeder RolSeeder
+php artisan make:controller Admin\UsuarioController
+->crea con metodos
+php artisan make:controller Admin\RolController -r
+php artisan make:controller Admin\PermisosController -r
+
+git checkout -b 25_Avance_Roles
+git branch
+git status
+
+git add .
+git commit -m "Roles y Permisos"
+git push origin 25_Avance_Roles
+->Click en boton Merge pull request
