@@ -29,7 +29,7 @@ Route::get('categorias/{categoria}', MostrarCategoria::class)->name('admin.categ
 
 Route::get('marcas', MostrarMarca::class)->name('admin.marcas.index');
 
-Route::get('ordenes', [OrdenController::class, 'index'])->middleware('can:admin.ordenes.index')->name('admin.ordenes.index');
+Route::get('ordenes', [OrdenController::class, 'index'])->name('admin.ordenes.index');
 Route::get('ordenes/{orden}', [OrdenController::class, 'mostrar'])->name('admin.ordenes.mostrar');
 
 Route::get('departamentos', DepartamentoComponente::class)->name('admin.departamentos.index');
@@ -43,8 +43,8 @@ Route::get('roles/{rol}', [RolController::class, 'show'])->name('admin.roles.sho
 Route::get('roles/{rol}/editar', [RolController::class, 'edit'])->name('admin.roles.edit');
 Route::get('roles/{rol}/actualizar', [RolController::class, 'update'])->name('admin.roles.update');
 Route::post('roles/{rol}', [RolController::class, 'destroy'])->name('admin.roles.destroy');
-Route::post('/roles/{rol}/permisos', [RolController::class, 'darPermiso'])->name('roles.permisos.dar');
-Route::delete('/roles/{rol}/permisos/{permiso}', [RolController::class, 'revocarPermiso'])->name('roles.permisos.revocar');
+Route::post('roles/{rol}/permisos', [RolController::class, 'darPermiso'])->name('admin.roles.permisos.dar');
+Route::delete('roles/{rol}/permisos/{permiso}', [RolController::class, 'revocarPermiso'])->name('admin.roles.permisos.revocar');
 
 Route::get('permisos', [PermisosController::class, 'index'])->name('admin.permisos.index');
 Route::get('permisos/crear', [PermisosController::class, 'create'])->name('admin.permisos.create');
@@ -52,16 +52,18 @@ Route::post('permisos/store', [PermisosController::class, 'store'])->name('admin
 Route::get('permisos/{permiso}', [PermisosController::class, 'show'])->name('admin.permisos.show');
 Route::get('permisos/{permiso}/editar', [PermisosController::class, 'edit'])->name('admin.permisos.edit');
 Route::get('permisos/{permiso}/actualizar', [PermisosController::class, 'update'])->name('admin.permisos.update');
-Route::post('/permisos/{permiso}/roles', [PermisosController::class, 'darRol'])->name('admin.permisos.roles.dar');
-Route::delete('/permisos/{permiso}/roles/{rol}', [PermisosController::class, 'revocarRol'])->name('admin.permisos.roles.revocar');
+Route::post('permisos/{permiso}', [PermisosController::class, 'destroy'])->name('admin.permisos.destroy');
+Route::post('permisos/{permiso}/roles', [PermisosController::class, 'darRol'])->name('admin.permisos.roles.dar');
+Route::delete('permisos/{permiso}/roles/{rol}', [PermisosController::class, 'revocarRol'])->name('admin.permisos.roles.revocar');
 
 Route::get('usuarios', UsuarioComponente::class)->name('admin.usuarios.index');
-Route::get('usuarios/{usuario}/editar', [UsuarioController::class, 'editar'])->name('admin.usuarios.editar');
-Route::put('usuarios/{usuario}/actualizar', [UsuarioController::class, 'actualizar'])->name('admin.usuarios.actualizar');
+Route::get('usuarios/{usuario}/actualizar', [UsuarioController::class, 'actualizar'])->name('admin.usuarios.actualizar');
 //Route::get('usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
 Route::get('usuarios/{usuario}', [UsuarioController::class, 'show'])->name('admin.usuarios.show');
-Route::post('usuarios/{usuario}/roles', [UsuarioController::class, 'darRol'])->name('admin.usuarios.roles');
-Route::delete('usuarios/{usuario}/roles/{rol}', [UsuarioController::class, 'revocarRol'])->name('admin.usuarios.roles.remove');
+
+Route::post('usuarios/{usuario}/roles', [UsuarioController::class, 'darRol'])->name('admin.usuarios.roles.dar');
+Route::delete('usuarios/{usuario}/roles/{rol}', [UsuarioController::class, 'revocarRol'])->name('admin.usuarios.roles.revocar');
 Route::post('usuarios/{usuario}/permisos', [UsuarioController::class, 'darPermiso'])->name('admin.usuarios.permisos.dar');
 Route::delete('usuarios/{usuario}/permisos/{permiso}', [UsuarioController::class, 'revocarPermiso'])->name('admin.usuarios.permisos.revocar');
+
 Route::post('usuarios/{usuario}', [UsuarioController::class, 'destroy'])->name('admin.usuarios.destroy');

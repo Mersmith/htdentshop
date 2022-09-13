@@ -42,19 +42,21 @@ class RolController extends Controller
     public function edit(Role $rol)
     {
         $permisos = Permission::all();
+        $rol->load('permissions');
 
         return view('admin.roles.edit',  compact('permisos', 'rol'));
     }
 
     public function update(Request $request, Role $rol)
-    {
+    {      
 
         $request->validate(['nombre' => ['required', 'min:3']]);
 
         $rol->update([
             'name' => $request->nombre,
         ]);
-        $rol->permissions()->sync($request->permisos);
+
+        $rol->syncPermissions(request()->input("permisos", []));
 
         return to_route('admin.roles.edit', $rol)->with('info', 'El rol se actualizo con exito');
     }

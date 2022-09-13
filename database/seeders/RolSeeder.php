@@ -16,16 +16,16 @@ class RolSeeder extends Seeder
      */
     public function run()
     {
-        $role1 = Role::create(['name'=>'admin']);
-        $role2 = Role::create(['name'=>'vendedor']);
-        $role3 = Role::create(['name'=>'logistica']);
+        $role1 = Role::create(['name' => 'admin']);
+        $role2 = Role::create(['name' => 'writer']);
+        $role3 = Role::create(['name' => 'user']);
 
-        Permission::create(['name'=>'admin.productos.crear'])->syncRoles([$role1, $role3]);
-        Permission::create(['name'=>'admin.productos.editar'])->syncRoles([$role1, $role3]);
-        Permission::create(['name'=>'admin.productos.eliminar'])->syncRoles([$role1, $role3]);
-        Permission::create(['name'=>'admin.productos.actualizar'])->syncRoles([$role1, $role3]);
+        Permission::create(['name' => 'admin.productos.crear', 'description' => 'Crear productos'])->syncRoles([$role1, $role3]);
+        Permission::create(['name' => 'admin.productos.editar', 'description' => 'Editar productos'])->syncRoles([$role1, $role3]);
+        Permission::create(['name' => 'admin.productos.eliminar', 'description' => 'Eliminar productos'])->syncRoles([$role1, $role3]);
+        Permission::create(['name' => 'admin.productos.actualizar', 'description' => 'Actualizar productos'])->syncRoles([$role1, $role3]);
 
-        Permission::create(['name'=>'admin.ordenes.index'])->syncRoles([$role1, $role2]);
-        Permission::create(['name'=>'admin.ordenes.mostrar'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.ordenes.index', 'description' => 'Ver ordenes'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'admin.ordenes.mostrar', 'description' => 'Ver orden'])->syncRoles([$role1, $role2]);
     }
 }
