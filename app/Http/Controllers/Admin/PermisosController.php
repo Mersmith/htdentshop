@@ -22,13 +22,14 @@ class PermisosController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(['nombre' => ['required', 'min:3']]);
+        $request->validate(['nombre' => ['required', 'min:3'], 'description' => ['required', 'min:3']]);
 
         Permission::create([
             'name' => $request->nombre,
+            'description' => $request->description,
         ]);
 
-        return to_route('admin.roles.index')->with('infoCreate', 'El permiso se cre con exito');
+        return to_route('admin.permisos.index')->with('infoCreate', 'El permiso se cre con exito');
     }
 
     public function edit(Permission $permiso)
@@ -41,10 +42,11 @@ class PermisosController extends Controller
     public function update(Request $request, Permission $permiso)
     {
 
-        $request->validate(['nombre' => ['required', 'min:3']]);
+        $request->validate(['nombre' => ['required', 'min:3'], 'description' => ['required', 'min:3']]);
 
         $permiso->update([
             'name' => $request->nombre,
+            'description' => $request->description,
         ]);
 
         return to_route('admin.permisos.edit', $permiso)->with('info', 'El permiso se actualizo con exito');
@@ -62,7 +64,7 @@ class PermisosController extends Controller
             return back()->with('message', 'Rol existe.');
         }
 
-        $permiso->assignRole($request->role);
+        $permiso->assignRole($request->rol);
         return back()->with('message', 'Rol asignado.');
     }
 

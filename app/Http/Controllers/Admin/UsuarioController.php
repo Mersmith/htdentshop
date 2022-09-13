@@ -18,7 +18,7 @@ class UsuarioController extends Controller
 
     public function actualizar(Request $request, User $usuario)
     {
-        $usuario->roles()->sync($request->roles);
+        $usuario->roles()->sync(request()->input("roles", []));
 
         return redirect()->route('admin.usuarios.editar', $usuario)->with('respuesta', 'Se asigno el rol');
     }
@@ -31,6 +31,16 @@ class UsuarioController extends Controller
         return view('admin.usuario.show', compact('usuario', 'roles', 'permisos'));
     }
 
+    public function destroy(User $user)
+    {
+        if ($user->hasRole('admin')) {
+            return back()->with('message', 'Eres admin.');
+        }
+        $user->delete();
+
+        return back()->with('message', 'Usuario eliminado.');
+    }
+
     public function darRol(Request $request, User $usuario)
     {
         if ($usuario->hasRole($request->rol)) {
@@ -41,11 +51,11 @@ class UsuarioController extends Controller
         return back()->with('message', 'Rol asignado.');
     }
 
-    public function revocarRol(User $user, Role $rol)
+    public function revocarRol(User $usuario, Role $rol)
     {
-        if ($user->hasRole($rol)) {
-            $user->removeRole($rol);
-            return back()->with('message', 'Rol removido.');
+        if ($usuario->hasRole($rol)) {
+            $usuario->removeRole($rol);
+            return back()->with('message', 'Role removed.');
         }
 
         return back()->with('message', 'Rol no existe.');
@@ -60,22 +70,12 @@ class UsuarioController extends Controller
         return back()->with('message', 'Permiso agregado.');
     }
 
-    public function revocarPermiso(User $user, Permission $permiso)
+    public function revocarPermiso(User $usuario, Permission $permiso)
     {
-        if ($user->hasPermissionTo($permiso)) {
-            $user->revokePermissionTo($permiso);
+        if ($usuario->hasPermissionTo($permiso)) {
+            $usuario->revokePermissionTo($permiso);
             return back()->with('message', 'permiso eliminado.');
         }
         return back()->with('message', 'permiso no existe.');
-    }
-
-    public function destroy(User $user)
-    {
-        if ($user->hasRole('admin')) {
-            return back()->with('message', 'Eres admin.');
-        }
-        $user->delete();
-
-        return back()->with('message', 'Usuario eliminado.');
     }
 }

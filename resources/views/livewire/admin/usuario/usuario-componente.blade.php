@@ -95,24 +95,16 @@
                                             wire:change="asignarRol({{ $usuario->id }}, $event.target.value)">
                                         No
                                     </label>
-                                    |
-                                    <a href="{{ route('admin.usuarios.editar', $usuario) }}">Editar</a>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <a href="{{ route('admin.usuarios.show', $usuario->id) }}"
                                         class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Roles</a>
-                                    <form class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md"
-                                        method="POST" action="{{ route('admin.usuarios.destroy', $usuario->id) }}"
-                                        onsubmit="return confirm('Are you sure?');">
-                                        @csrf
-                                        <button type="submit">Delete</button>
-                                    </form>
+                                    <a class="pl-2 hover:text-red-600 cursor-pointer"
+                                        wire:click="$emit('eliminarUsuarioModal', '{{ $usuario->id }}')">Eliminar</a>
 
                                 </td>
                             </tr>
                         @endforeach
-                        <!-- More people... -->
-
 
                     </tbody>
                 </table>
@@ -129,4 +121,32 @@
             @endif
         </x-tabla-responsiva>
     </div>
+    @push('script')
+        <script>
+            Livewire.on('eliminarUsuarioModal', usuarioId => {
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        Livewire.emitTo('admin.usuario.usuario-componente', 'eliminarUsuario', usuarioId)
+
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+
+            });
+        </script>
+    @endpush
 </div>
