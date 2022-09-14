@@ -44,16 +44,16 @@
                                 {{ __('Administrar cuenta') }}
                             </div>
 
-                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Perfil') }}
-                            </x-jet-dropdown-link>
-
                             @role('admin')
                                 <x-jet-dropdown-link href="{{ route('admin.index') }}">
                                     Administrador
                                 </x-jet-dropdown-link>
                             @endrole
-                            
+
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Perfil') }}
+                            </x-jet-dropdown-link>
+
                             <x-jet-dropdown-link href="{{ route('orden.index') }}">
                                 Mis ordenes
                             </x-jet-dropdown-link>

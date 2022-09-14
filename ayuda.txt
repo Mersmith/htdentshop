@@ -489,3 +489,26 @@ git add .
 git commit -m "Roles y Permisos"
 git push origin 25_Avance_Roles
 ->Click en boton Merge pull request
+
+***********************13/09/22******************************************
+git checkout -b 26_Avance_Roles_2
+git branch
+git status
+
+git add .
+git commit -m "Roles y Permisos"
+git push origin 26_Avance_Roles_2
+->Click en boton Merge pull request
+
+***********************14/09/22******************************************
+php artisan route:list
+
+git checkout -b 27_Rutas_Usuario
+git branch
+git status
+
+git add .
+git commit -m "Rutas de usuario, jetstream y fortify"
+git push origin 27_Rutas_Usuario
+->Click en boton Merge pull request
+***********************14/09/22 - 2******************************************
