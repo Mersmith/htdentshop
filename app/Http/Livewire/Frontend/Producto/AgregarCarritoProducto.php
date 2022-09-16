@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Frontend\Producto;
+
 use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Storage;
@@ -19,8 +20,10 @@ class AgregarCarritoProducto extends Component
 
         if ($this->producto->cantidad) {
             $this->opciones["cantidad"] = $this->producto->cantidad;
+            $this->opciones["puntos_ganar"] = $this->producto->puntos_ganar;
         } else {
             $this->opciones["cantidad"] = $this->producto->stock;
+            $this->opciones["puntos_ganar"] = $this->producto->puntos_ganar;
         }
     }
 
@@ -41,6 +44,7 @@ class AgregarCarritoProducto extends Component
 
     public function agregarProducto()
     {
+        //dump($this->producto->puntos_ganar);
         Cart::add(
             [
                 'id' => $this->producto->id,

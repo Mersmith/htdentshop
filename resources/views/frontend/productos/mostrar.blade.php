@@ -92,6 +92,8 @@
             <p>Precio: {{ $producto->precio }}</p>
             <p>Recibelo el: {{ Date::now()->addDay(7)->locale('es')->format('l j F') }}</p>
 
+            <h2>Ganas {{ $producto->puntos_ganar }} puntos </h2>
+
             <div>
                 @if ($producto->subcategoria->medida && !$producto->subcategoria->color)
                     <h2>Producto Varia en Medida</h2>
@@ -103,6 +105,7 @@
                     <h2>Producto Varia en Medida y Color</h2>
                     @livewire('frontend.producto.agregar-carrito-producto-medida', ['producto' => $producto])
                 @else
+                    <h2>Producto no Varia</h2>
                     @livewire('frontend.producto.agregar-carrito-producto', ['producto' => $producto])
                 @endif
             </div>

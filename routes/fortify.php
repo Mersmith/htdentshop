@@ -21,7 +21,7 @@ use Laravel\Fortify\Http\Controllers\TwoFactorSecretKeyController;
 use Laravel\Fortify\Http\Controllers\VerifyEmailController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
-/*Route::middleware([
+Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
@@ -29,7 +29,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});*/
+});
 
 Route::group(['middleware' => config('fortify.middleware', ['web'])], function () {
     $enableViews = config('fortify.views', true);

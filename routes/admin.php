@@ -16,12 +16,14 @@ use App\Http\Livewire\Admin\Departamento\MostrarDepartamento;
 use App\Http\Livewire\Admin\Marca\MostrarMarca;
 use App\Http\Livewire\Admin\Usuario\UsuarioComponente;
 use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Livewire\Admin\Cupon\AgregarCupones;
+use App\Http\Livewire\Admin\Cupon\EditarCupones;
+use App\Http\Livewire\Admin\Cupon\MostrarCupones;
 
 Route::get('/', MostrarProductos::class)->name('admin.index');
 
 Route::get('productos/crear', CrearProducto::class)->name('admin.productos.crear');
 Route::get('productos/{producto}/editar', EditarProducto::class)->name('admin.productos.editar');
-
 Route::post('productos/{producto}/files', [ProductoController::class, 'files'])->name('admin.productos.files');
 
 Route::get('categorias', [CategoriaController::class, 'index'])->name('admin.categorias.index');
@@ -58,12 +60,14 @@ Route::delete('permisos/{permiso}/roles/{rol}', [PermisosController::class, 'rev
 
 Route::get('usuarios', UsuarioComponente::class)->name('admin.usuarios.index');
 Route::get('usuarios/{usuario}/actualizar', [UsuarioController::class, 'actualizar'])->name('admin.usuarios.actualizar');
-//Route::get('usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
 Route::get('usuarios/{usuario}', [UsuarioController::class, 'show'])->name('admin.usuarios.show');
-
+Route::post('usuarios/{usuario}', [UsuarioController::class, 'destroy'])->name('admin.usuarios.destroy');
 Route::post('usuarios/{usuario}/roles', [UsuarioController::class, 'darRol'])->name('admin.usuarios.roles.dar');
 Route::delete('usuarios/{usuario}/roles/{rol}', [UsuarioController::class, 'revocarRol'])->name('admin.usuarios.roles.revocar');
 Route::post('usuarios/{usuario}/permisos', [UsuarioController::class, 'darPermiso'])->name('admin.usuarios.permisos.dar');
 Route::delete('usuarios/{usuario}/permisos/{permiso}', [UsuarioController::class, 'revocarPermiso'])->name('admin.usuarios.permisos.revocar');
 
-Route::post('usuarios/{usuario}', [UsuarioController::class, 'destroy'])->name('admin.usuarios.destroy');
+Route::get('cupones', MostrarCupones::class)->name('admin.cupones.mostrar');
+Route::get('cupones/crear', AgregarCupones::class)->name('admin.cupones.agregar');
+Route::get('cupones/{cupon}/editar', EditarCupones::class)->name('admin.cupones.editar');
+

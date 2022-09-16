@@ -1,5 +1,5 @@
 <div class="container py-8 grid lg:grid-cols-2 xl:grid-cols-5 gap-6">
-<h2>hola 1</h2>
+    <h2>hola 1</h2>
     <div class="order-2 lg:order-1 lg:col-span-1 xl:col-span-3">
 
         <div class="bg-white rounded-lg shadow p-6">
@@ -153,6 +153,7 @@
                             </div>
 
                             <p>USD {{ $itemCarrito->price }}</p>
+                            <p>Puntos a ganar: {{ $itemCarrito->options['puntos_ganar'] * $itemCarrito->qty }}</p>
                         </article>
                     </li>
                 @empty
@@ -163,6 +164,90 @@
                     </li>
                 @endforelse
             </ul>
+            <hr>
+
+
+            @php
+                $productosCarrito = json_decode(Cart::content(), true);
+                //dump($productosCarrito);
+                
+                $sumar = array_sum(array_column($productosCarrito, 'id'));
+                //dump($sumar);
+                
+                $cantidadElementos = count($productosCarrito);
+                //dump($cantidadElementos);
+                
+                $totalPuntosProducto = 0;
+                foreach ($productosCarrito as $producto) {
+                    $opciones = $producto['options'];
+                    $totalPuntosProducto += $opciones['puntos_ganar'] * $producto['qty'];
+                }
+                
+                echo "<p>Ganarás $totalPuntosProducto puntos<p>";
+                //dump($totalPuntosProducto);
+            @endphp
+
+            <hr>
+
+            @if (!$cupon_descuento > 0)
+                <div>
+                    <p class="flex justify-between items-center">
+                        Cupon
+                        <label>
+                            <input type="checkbox" name="tienes_cupon" value="1" wire:model="tieneCodigoCupon">
+                            <span>¿Tienes cupón?</span>
+                        </label>
+                    </p>
+
+                    @if ($tieneCodigoCupon == 1)
+                        <div>
+                            <form wire:submit.prevent="aplicarCodigoCupon">
+                                <h4>Codigo de cupon</h4>
+                                @if (Session::has('cupon_mensaje'))
+                                    <div>{{ Session::get('cupon_mensaje') }}</div>
+                                @endif
+                                <p>
+                                    <label>Ingresa el codigo de cupon</label>
+                                    <input type="text" name="codigo_cupon" wire:model="codigo_cupon">
+                                </p>
+                                <button type="submit"
+                                    class="px-4 py-2 bg-green-500 hover:bg-green-700 rounded-md">Aplicar</button>
+                            </form>
+                        </div>
+                    @endif
+                </div>
+            @endif
+            <hr>
+            @if (!$puntos_descuento > 0)
+                <div>
+                    <p class="flex justify-between items-center">
+                        Tienes {{ auth()->user()->puntos }} puntos
+                        <label>
+                            <input type="checkbox" name="tiene_puntos" value="1" wire:model="tienePuntos">
+                            <span>¿Usar puntos?</span>
+                        </label>
+                    </p>
+                    @if ($tienePuntos == 1)
+                        <div>
+                            <form wire:submit.prevent="aplicarPuntos">
+                                <h4>Puntos</h4>
+                                @if (Session::has('puntos_mensaje'))
+                                    <div>{{ Session::get('puntos_mensaje') }}</div>
+                                @endif
+                                <p>
+                                    <label>Ingresa la cantidad de puntos</label>
+                                    <input type="number" name="puntosCanje" wire:model="puntosCanje">
+                                </p>
+                                <button type="submit"
+                                    class="px-4 py-2 bg-green-500 hover:bg-green-700 rounded-md">Aplicar</button>
+                            </form>
+                        </div>
+                    @endif
+
+                </div>
+
+            @endif
+
 
             <hr class="mt-4 mb-3">
 
@@ -181,15 +266,50 @@
                         @endif
                     </span>
                 </p>
+                <hr>
+
+                @if ($cupon_descuento > 0)
+                    <p class="flex justify-between items-center">
+                        Cupon
+                        <span wire:click.prevent="eliminarCupon"><i class="fa-solid fa-xmark"></i></span>
+                        @if ($tipoCupon == 'fijo')
+                            <span class="font-semibold">
+                                -{{ $cupon_descuento }} USD
+                            </span>
+                        @else
+                            <span class="font-semibold">
+                                -{{ $cupon_descuento }} %
+                            </span>
+                        @endif
+
+                    </p>
+                @endif
+
+                @if ($puntos_descuento > 0)
+                    <p class="flex justify-between items-center">
+                        Puntos
+                        <span wire:click.prevent="eliminarPuntos"><i class="fa-solid fa-xmark"></i></span>
+                        <span class="font-semibold">
+                            -{{ $puntos_descuento }} USD
+                        </span>
+
+                    </p>
+                @endif
 
                 <hr class="mt-4 mb-3">
 
                 <p class="flex justify-between items-center font-semibold">
                     <span class="text-lg">Total</span>
                     @if ($tipo_envio == 1)
-                        {{ Cart::subtotal() }} USD
+                        @if ($tipoCupon == 'fijo')
+                            {{ Cart::subtotal() - $cupon_descuento - $puntos_descuento }} USD
+                        @else
+                            {{ Cart::subtotal() - $cupon_descuento - $puntos_descuento - ($cupon_descuento * Cart::subtotal()) / 100 }}
+                            USD
+                        @endif
                     @else
-                        {{ Cart::subtotal() + $costo_envio }} USD
+                        {{ Cart::subtotal() + $costo_envio - $cupon_descuento - $puntos_descuento }}
+                        USD
                     @endif
                 </p>
             </div>

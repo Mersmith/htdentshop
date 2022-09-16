@@ -24,8 +24,10 @@ class AgregarCarritoProductoMedida extends Component
         $this->opciones["imagen"] = Storage::url($this->producto->imagenes->first()->url);
         if ($this->producto->cantidad) {
             $this->opciones["cantidad"] = $this->producto->cantidad;
+            $this->opciones["puntos_ganar"] = $this->producto->puntos_ganar;
         } else {
             $this->opciones["cantidad"] = $this->producto->stock;
+            $this->opciones["puntos_ganar"] = $this->producto->puntos_ganar;
         }
     }
 

@@ -40,7 +40,9 @@ class ProductoFactory extends Factory
             'subcategoria_id' => $subcategoria->id,
             'marca_id' => $marca->id,
             'cantidad' => $cantidad,
-            'estado' => 2
+            'estado' => 2,
+            'puntos_ganar' => $this->faker->randomElement([10, 20, 30, 40, 50]),
+            'puntos_tope' => $this->faker->randomElement([500, 600, 700, 800, 1000]),
         ];
     }
 }
