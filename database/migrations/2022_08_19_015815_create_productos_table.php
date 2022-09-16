@@ -23,6 +23,8 @@ return new class extends Migration
             $table->text('descripcion');
             $table->float('precio');
             $table->integer('cantidad')->nullable();
+            $table->integer('puntos_ganar')->nullable();
+            $table->integer('puntos_tope')->nullable();
             $table->enum('estado', [Producto::BORRADOR, Producto::PUBLICADO])->default(Producto::BORRADOR);
 
             $table->unsignedBigInteger('subcategoria_id');

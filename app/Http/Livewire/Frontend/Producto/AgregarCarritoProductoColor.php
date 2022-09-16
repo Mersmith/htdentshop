@@ -20,6 +20,7 @@ class AgregarCarritoProductoColor extends Component
     {
         $this->colores = $this->producto->colores;
         $this->opciones["imagen"] = Storage::url($this->producto->imagenes->first()->url);
+        $this->opciones["puntos_ganar"] = $this->producto->puntos_ganar;
     }
 
     //Palabra reservada con la variable color

@@ -38,6 +38,9 @@
                     <x-jet-nav-link href="{{ route('admin.permisos.index') }}" :active="request()->routeIs('admin.permisos.index.*')">
                         Permisos
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('admin.cupones.mostrar') }}" :active="request()->routeIs('admin.cupones.mostrar.*')">
+                        Cupones
+                    </x-jet-nav-link>
                 </div>
             </div>
 

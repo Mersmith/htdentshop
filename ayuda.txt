@@ -512,3 +512,21 @@ git commit -m "Rutas de usuario, jetstream y fortify"
 git push origin 27_Rutas_Usuario
 ->Click en boton Merge pull request
 ***********************14/09/22 - 2******************************************
+php artisan make:model Cupon -m
+php artisan make:livewire Admin\Cupon\mostrar-cupones
+php artisan make:livewire Admin\Cupon\agregar-cupones
+php artisan make:livewire Admin\Cupon\editar-cupones
+
+php artisan migrate:fresh --seed
+
+***********************16/09/22******************************************
+->Puntos y Cupon
+
+git checkout -b 28_Puntos_Cupon
+git branch
+git status
+
+git add .
+git commit -m "Puntos y Cupon"
+git push origin 28_Puntos_Cupon
+->Click en boton Merge pull request

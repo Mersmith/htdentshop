@@ -1,7 +1,7 @@
 <div class="container py-8">
     <x-tabla-responsiva>
         <div class="px-6 py-4 bg-white">
-            <h1 class="text-lg font-semibold text-gray-700">CARRO DE COMPRAS</h1>
+            <h1 class="text-lg font-semibold text-gray-700">CARRO DE COMPRAS 2</h1>
         </div>
 
         @if (Cart::count())
@@ -87,6 +87,8 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 <div class="text-sm text-gray-500">
                                     USD {{ $item->price * $item->qty }}
+                                    |
+                                    <span>Puntos: {{$item->options->puntos_ganar * $item->qty}}</span>
                                 </div>
                             </td>
                         </tr>
