@@ -34,18 +34,18 @@
     $preference->save();
     
     /*$item = new MercadoPago\Item();
-                $item->title = 'Mi producto';
-                $item->quantity = 1;
-                $item->unit_price = 75.56;
-                $preference->items = [$item];
-                $preference->save();*/
+                                        $item->title = 'Mi producto';
+                                        $item->quantity = 1;
+                                        $item->unit_price = 75.56;
+                                        $preference->items = [$item];
+                                        $preference->save();*/
     
     ?>
 
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <h2>Hola 2</h2>
+        <h2>orden/1/pagar</h2>
         <div class="bg-white rounded-lg shadow-lg px-12 py-8 mb-6 flex items-center">
 
             <div class="relative">
@@ -184,8 +184,14 @@
             </table>
         </div>
         <div>
-            <p> Subtotal:{{ $orden->total - $orden->costo_envio }} </p>
+            <p> Subtotal:{{ $orden->total - $orden->costo_envio + (float) $orden->cupon_precio + (float) $orden->puntos_canjeados * 1.5 }}
+            </p>
             <p> Envio:{{ $orden->costo_envio }} </p>
+            {{-- <p> Cupon descuento:{{ $orden->cupon_descuento }} </p> --}}
+            <p> Cupon en dolares:{{ $orden->cupon_precio}}
+            </p>
+            {{-- <p> Puntos Canjeados:{{ $orden->puntos_canjeados }} </p> --}}
+            <p> Puntos en Dolares:{{ $orden->puntos_canjeados * 1.5 }} </p>
             <p> Total:{{ $orden->total }} USD </p>
             <div class="cho-container"></div>
         </div>

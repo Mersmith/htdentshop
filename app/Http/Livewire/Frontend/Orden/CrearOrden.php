@@ -59,7 +59,6 @@ class CrearOrden extends Component
     {
         $this->puntos_descuento = 0;
         $this->tienePuntos = 0;
-
     }
 
     public $rules = [
@@ -117,9 +116,10 @@ class CrearOrden extends Component
         $orden->celular = $this->celular;
         $orden->tipo_envio = $this->tipo_envio;
         $orden->costo_envio = 0;
-        $orden->total = $this->costo_envio + Cart::subtotal();
+        $orden->total = $this->costo_envio + Cart::subtotal() - (float)$this->cupon_descuento - (float)$this->puntos_descuento;
         $orden->contenido = Cart::content();
         $orden->cupon_descuento = $this->codigo_cupon;
+        $orden->cupon_precio = $this->cupon_descuento;
         $orden->puntos_canjeados = $this->puntosCanje;
 
         if ($this->tipo_envio == 2) {

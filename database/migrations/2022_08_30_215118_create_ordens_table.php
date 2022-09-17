@@ -27,6 +27,7 @@ return new class extends Migration
             $table->json('envio')->nullable();
             $table->string('puntos_canjeados')->nullable();
             $table->string('cupon_descuento')->nullable();
+            $table->string('cupon_precio')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

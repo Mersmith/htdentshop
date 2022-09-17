@@ -1,4 +1,5 @@
 <x-app-layout>
+    <h2>Orden</h2>
 
     <div class="container py-12">
 
