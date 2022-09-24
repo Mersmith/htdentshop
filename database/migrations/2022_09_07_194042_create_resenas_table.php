@@ -19,8 +19,13 @@ return new class extends Migration
             $table->text('comentario');
             $table->integer('puntaje');
 
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('producto_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('padre_id')->nullable();
+            $table->foreign('padre_id', 'fk_resena_resena')->references('id')->on('resenas')->onDelete('cascade');
+
+            //$table->integer('padre_id')->unsigned()->nullable();
+
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('producto_id')->constrained('productos')->onDelete('cascade');
 
             $table->timestamps();
         });

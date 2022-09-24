@@ -3,11 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\InicioController;
 use App\Http\Controllers\Frontend\CategoriaController;
+use App\Http\Controllers\Frontend\ComentarioController;
 use App\Http\Controllers\Frontend\ProductoController;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Livewire\Frontend\Carrito\CarritoCompras;
 use App\Http\Controllers\Frontend\ResenaController;
 use App\Models\Orden;
+
 require_once __DIR__ . '/jetstream.php';
 require_once __DIR__ . '/fortify.php';
 
@@ -37,3 +39,4 @@ Route::get('prueba', function () {
 });
 
 Route::post('resenas/{producto}', [ResenaController::class, 'store'])->name('resenas.store');
+Route::post('resenas/{producto}/{comentario}', [ResenaController::class, 'respuesta'])->name('resenas.respuesta');

@@ -12,16 +12,22 @@ class Resena extends Model
     protected $fillable =[
         'user_id',
         'producto_id',
+        'padre_id',
         'puntaje',
         'comentario'
     ];
-
+    
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function producto(){
         return $this->belongsTo(Producto::class);
     }
+
+    public function respuestas(){
+        return $this->hasMany(Resena::class, 'padre_id');
+    }
+
 
 }

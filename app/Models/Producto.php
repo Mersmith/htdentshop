@@ -37,8 +37,9 @@ class Producto extends Model
         return $this->hasMany(Medida::class);
     }
 
-    public function resenas(){
-        return $this->hasMany(Resena::class);
+    public function resenas()
+    {
+        return $this->hasMany(Resena::class)->whereNull('padre_id');
     }
 
     //Relación uno a muchos inversa
