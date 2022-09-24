@@ -542,3 +542,13 @@ git add .
 git commit -m "Puntos y Cupon en Orden Pagar"
 git push origin 29_Puntos_Cupon_2
 ->Click en boton Merge pull request
+
+***********************24/09/22******************************************
+git checkout -b 30_Comentarios
+git branch
+git status
+
+git add .
+git commit -m "Comentarios"
+git push origin 30_Comentarios
+->Click en boton Merge pull request

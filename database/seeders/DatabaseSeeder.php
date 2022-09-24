@@ -42,5 +42,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(DepartamentoSeeder::class);
 
+        \App\Models\Resena::factory(200)->create();
     }
 }

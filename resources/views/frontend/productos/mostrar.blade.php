@@ -7,81 +7,6 @@
                 </li>
             @endforeach
         </div>
-        {{-- Policy Producto --}}
-        @can('productoComprado', $producto)
-            <div>
-                <h2>Dejar Reseña</h2>
-                <form action="{{ route('resenas.store', $producto) }}" method="POST">
-                    @csrf
-                    <textarea name="comentario" id="editor" cols="30" rows="10"></textarea>
-                    <x-jet-input-error for="comentario" />
-
-                    <div class="flex items-center mt-2" x-data="{ rating: 5 }">
-                        <p class="font-semibold mr-3">Puntaje:</p>
-                        <ul class="flex space-x-2">
-                            <li x-bind:class="rating >= 1 ? 'text-yellow-500' : ''">
-                                <button type="button" class="focus:outline-none" x-on:click="rating = 1">
-                                    <i class="fas fa-star"></i>
-                                </button>
-                            </li>
-                            <li x-bind:class="rating >= 2 ? 'text-yellow-500' : ''">
-                                <button type="button" class="focus:outline-none" x-on:click="rating = 2">
-                                    <i class="fas fa-star"></i>
-                                </button>
-                            </li>
-                            <li x-bind:class="rating >= 3 ? 'text-yellow-500' : ''">
-                                <button type="button" class="focus:outline-none" x-on:click="rating = 3">
-                                    <i class="fas fa-star"></i>
-                                </button>
-                            </li>
-                            <li x-bind:class="rating >= 4 ? 'text-yellow-500' : ''">
-                                <button type="button" class="focus:outline-none" x-on:click="rating = 4">
-                                    <i class="fas fa-star"></i>
-                                </button>
-                            </li>
-                            <li x-bind:class="rating >= 5 ? 'text-yellow-500' : ''">
-                                <button type="button" class="focus:outline-none" x-on:click="rating = 5">
-                                    <i class="fas fa-star"></i>
-                                </button>
-                            </li>
-                        </ul>
-                        <input name="puntaje" class="hidden" type="number" x-model="rating">
-                        <x-jet-button class="ml-auto">
-                            Agregar reseña
-                        </x-jet-button>
-                    </div>
-                </form>
-            </div>
-        @endcan
-
-        @if ($producto->resenas->isNotEmpty())
-            <div class="mt-6">
-                <h2 class="font-bold text-lg">Reseñas</h2>
-                <div class="mt-2">
-                    @foreach ($producto->resenas as $resena)
-                        <div class="flex">
-                            <div class="flex-shrink-0">
-                                <img src="{{ $resena->user->profile_photo_url }}" alt="{{ $resena->user->name }}">
-                            </div>
-                            <div>
-                                <p>{{ $resena->user->name }}</p>
-                                <p>{{ $resena->created_at->diffForHumans() }}</p>
-                            </div>
-                            <div>
-                                {!! $resena->comentario !!}
-                            </div>
-                            <div>
-                                <br>
-                                <p>{{ $resena->puntaje }}</p>
-                                <i class="fas fa-star text-yellow-500"></i>
-                            </div>
-
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
-        @endif
 
         <div class="col-span-4">
             <h1>{{ $producto->nombre }} </h1>
@@ -113,6 +38,82 @@
 
     </div>
 
+    @include('frontend.productos.formularioResena')
+    @if ($producto->resenas->isNotEmpty())
+        {{-- @include('frontend.productos.resenas', ['resenas' => $producto->resenas, 'producto_id' => $producto->id]) --}}
+
+
+        <div class="mt-6">
+            <h2 class="font-bold text-lg">Reseñas</h2>
+            <div class="mt-2" x-data="{ seleccionado: null }">
+                @foreach ($producto->resenas as $key => $resena)
+                    <div class="flex" style="flex-direction: column;">
+                        <div class="flex-shrink-0">
+                            <img src="{{ $resena->user->profile_photo_url }}" alt="{{ $resena->user->name }}">
+                        </div>
+                        <div>
+                            <p>{{ $resena->user->name }}</p>
+                            <span
+                                @click="seleccionado !== {{ $key }} ? seleccionado = {{ $key }} : seleccionado = null"
+                                style="cursor: pointer; color: red;">Responder</span>
+                            <p>{{ $resena->created_at->diffForHumans() }}</p>
+                        </div>
+                        <div>
+                            {!! $resena->comentario !!}
+                        </div>
+                        <div>
+                            <br>
+                            <p>{{ $resena->puntaje }}</p>
+                            <i class="fas fa-star text-yellow-500"></i>
+                        </div>
+                        <div x-show="seleccionado == {{ $key }}">
+                            <h2>Responder</h2>
+                            @include('frontend.productos.formularioResenaResponder', [
+                                'padre_id' => $resena->id,
+                                'producto_id' => $producto->id,
+                            ])
+                        </div>
+                        <br>
+                        @if (count($resena->respuestas) > 0)
+                            <div style="margin-left: 50px;">
+                                <h4>Respuestas</h4>
+                                <div x-data="{ seleccionadoRespuesta: null }">
+                                    @foreach ($resena->respuestas as $key2 => $respuesta)
+                                        <strong>{{ $respuesta->user->name }}</strong>
+                                        <span
+                                            @click="seleccionadoRespuesta !== {{ $key2 }} ? seleccionadoRespuesta = {{ $key2 }} : seleccionadoRespuesta = null"
+                                            style="cursor: pointer; color: red;">Responder</span>
+                                        <p>{{ $respuesta->comentario }}</p>
+                                        <div x-show="seleccionadoRespuesta == {{ $key2 }}">
+                                            <h2>Responder</h2>
+                                            @include('frontend.productos.formularioResenaResponder', [
+                                                'padre_id' => $respuesta->id,
+                                                'producto_id' => $producto->id,
+                                            ])
+                                        </div>
+                                        @if (count($respuesta->respuestas) > 0)
+                                            <hr>
+                                            <div style="margin-left: 50px;">
+                                                <h4>Respuestas 2</h4>
+                                                @foreach ($respuesta->respuestas as $respuesta2)
+                                                    <strong>{{ $respuesta2->user->name }}</strong>
+                                                    <p>{{ $respuesta2->comentario }}</p>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                        <hr>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+
+                    </div>
+                    <hr>
+                @endforeach
+            </div>
+        </div>
+
+    @endif
 
     @push('script')
         <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
